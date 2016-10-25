@@ -1,12 +1,21 @@
-# currybhari-service
+Hello
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.0.2.
+Repository URL: 
+    1. View: https://github.com/ankitzalani/currybhari-view
+    2. Server: https://github.com/ankitzalani/currybhari
 
-## Build & development
+Issues: 
+    1. View: https://github.com/ankitzalani/currybhari-view/issues    
+    2. Server: https://github.com/ankitzalani/currybhari/issues
+    
+View application:
+You need to install git, npm and node to your development environment to run the application.
+Install them from the below locations:
+    1. github:       https://desktop.github.com
+    2. npm & nodejs: https://www.npmjs.com/get-npm    
 
-Run `grunt` for building and `grunt serve` for preview.
+To run the view application use below command:
+npm install      -- This is a one time activity
+npm start        -- This will start the application in port 9000 ie http://localhost:9000/
 
-## Testing
 
-Running `grunt test` will run the unit tests with karma.
