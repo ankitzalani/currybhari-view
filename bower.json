@@ -1,5 +1,5 @@
 {
-  "name": "currybhari-service",
+  "name": "currybhari-view",
   "version": "0.0.0",
   "dependencies": {
     "angular": "^1.3.0",
@@ -17,5 +17,5 @@
     "angular-mocks": "^1.3.0"
   },
   "appPath": "app",
-  "moduleName": "currybhariServiceApp"
+  "moduleName": "currybhariViewApp"
 }
