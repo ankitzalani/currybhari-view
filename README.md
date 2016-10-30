@@ -1,21 +1,21 @@
 Hello
 
-Repository URL: 
-    1. View: https://github.com/ankitzalani/currybhari-view
-    2. Server: https://github.com/ankitzalani/currybhari
+Repository URL:</br>
+    1. View: https://github.com/ankitzalani/currybhari-view</br>
+    2. Server: https://github.com/ankitzalani/currybhari</br>
 
-Issues: 
-    1. View: https://github.com/ankitzalani/currybhari-view/issues    
-    2. Server: https://github.com/ankitzalani/currybhari/issues
+Issues:</br>
+    1. View: https://github.com/ankitzalani/currybhari-view/issues  
+    2. Server: https://github.com/ankitzalani/currybhari/issues</br>
     
-View application:
-You need to install git, npm and node to your development environment to run the application.
-Install them from the below locations:
-    1. github:       https://desktop.github.com
-    2. npm & nodejs: https://www.npmjs.com/get-npm    
+View application:</br>
+You need to install git, npm and node to your development environment to run the application.</br>
+Install them from the below locations:</br>
+    1. github:       https://desktop.github.com</br>
+    2. npm & nodejs: https://www.npmjs.com/get-npm</br>
 
-To run the view application use below command:
-npm install      -- This is a one time activity
-npm start        -- This will start the application in port 9000 ie http://localhost:9000/
+To run the view application use below command:</br>
+npm install      -- This is a one time activity</br>
+npm start        -- This will start the application in port 9000 ie http://localhost:9000/</br>
 
 
