@@ -1,5 +1,3 @@
-Hello
-
 Repository URL:</br>
     1. View: https://github.com/ankitzalani/currybhari-view</br>
     2. Server: https://github.com/ankitzalani/currybhari</br>
