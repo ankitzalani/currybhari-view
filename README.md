@@ -1,11 +1,3 @@
-Repository URL:</br>
-    1. View: https://github.com/ankitzalani/currybhari-view</br>
-    2. Server: https://github.com/ankitzalani/currybhari</br>
-
-Issues:</br>
-    1. View: https://github.com/ankitzalani/currybhari-view/issues  
-    2. Server: https://github.com/ankitzalani/currybhari/issues</br>
-    
 View application:</br>
 You need to install git, npm and node to your development environment to run the application.</br>
 Install them from the below locations:</br>
