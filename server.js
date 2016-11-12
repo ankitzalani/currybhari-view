@@ -31,7 +31,7 @@ app.get("/productDetails", function(req, res) {
     if (err) throw err;
     client
       .query('SELECT * FROM productdetails;', function (err, result) {
-          res.status(200).json(result);
+          res.status(200).json(result.rows);
       });
   });
 });
