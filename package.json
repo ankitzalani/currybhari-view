@@ -10,7 +10,9 @@
     "http": "~0.0.0",
     "body-parser": "~1.6.2",
     "cookie-parser": "~1.0.1",
-    "serve-favicon": "*"
+    "serve-favicon": "*",
+    "pg": "*",
+    "jade": "*"
   },
   "scripts": {
     "start": "node server.js"
