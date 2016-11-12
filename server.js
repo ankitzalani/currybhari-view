@@ -20,9 +20,9 @@ pg.connect(process.env.DATABASE_URL, function(err, client) {
   if (err) throw err;
   console.log('Connected to postgres! Getting schemas...');
 
-    // client
-    //   .query('SELECT * FROM productdetails;')
-    //   .on('row', function(row) {
-    //     console.log(JSON.stringify(row));
-    //   });
+    client
+      .query('SELECT * FROM productdetails;')
+      .on('row', function(row) {
+        console.log(JSON.stringify(row));
+      });
 });
