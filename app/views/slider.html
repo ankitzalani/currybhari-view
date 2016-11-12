@@ -10,12 +10,14 @@
                         <li data-target="#slider-carousel" data-slide-to="2"></li>
                     </ol>
 
-                    <div class="carousel-inner">
+                    <div class="carousel-inner" ng-controller="productSliderController">
                         <div class="item active">
                             <div class="col-sm-6">
-                                <h1><span>CB</span>Khaman</h1>
-                                <h2>Gujrat Special Khaman</h2>
-                                <p>Special Gujrati Khaman</p>
+                                <h1 ng-repeat="product in getProducts()"><span>{{product.name}}</span>
+
+                                </h1>
+                                <h2>{{product.name}}</h2>
+                                <p>Special Guzrati Khaman</p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
                             </div>
                             <div class="col-sm-6">
