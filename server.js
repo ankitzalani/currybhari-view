@@ -1,6 +1,5 @@
 var express = require("express");
 var pg = require('pg');
-
 var app = express();
 var port = process.env.PORT || 9000;
 
@@ -13,16 +12,30 @@ app.listen(port, function() {
     console.log("Listening on port " + port);
 });
 
-console.log(process.env.DATABASE_URL);
+var service = require("./service");
+
+var databaseURL = process.env.DATABASE_URL || 'postgres://gszdjrbvwmazqj:SVnFU-4h5ligf-mdZ7ngurrPf8@ec2-54-163-245-3.compute-1.amazonaws.com:5432/d3cjnek3hla7ba';
 
 pg.defaults.ssl = true;
-pg.connect(process.env.DATABASE_URL, function(err, client) {
+pg.connect(databaseURL, function(err, client) {
   if (err) throw err;
   console.log('Connected to postgres! Getting schemas...');
-
     client
       .query('SELECT * FROM productdetails;')
       .on('row', function(row) {
         console.log(JSON.stringify(row));
       });
+});
+
+app.get("/productDetails", function(req, res) {
+  pg.connect(databaseURL, function(err, client) {
+    if (err) throw err;
+    console.log('Connected to postgres! Getting schemas...');
+      client
+        .query('SELECT * FROM productdetails;')
+        .on('row', function(row) {
+          console.log(JSON.stringify(row));
+          res.status(200).json(JSON.stringify(row));
+        });
+  });
 });
