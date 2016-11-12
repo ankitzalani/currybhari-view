@@ -19,7 +19,6 @@ var databaseURL = process.env.DATABASE_URL || 'postgres://gszdjrbvwmazqj:SVnFU-4
 pg.defaults.ssl = true;
 pg.connect(databaseURL, function(err, client) {
   if (err) throw err;
-  console.log('Connected to postgres! Getting schemas...');
     client
       .query('SELECT * FROM productdetails;')
       .on('row', function(row) {
@@ -30,12 +29,9 @@ pg.connect(databaseURL, function(err, client) {
 app.get("/productDetails", function(req, res) {
   pg.connect(databaseURL, function(err, client) {
     if (err) throw err;
-    console.log('Connected to postgres! Getting schemas...');
-      client
-        .query('SELECT * FROM productdetails;')
-        .on('row', function(row) {
-          console.log(JSON.stringify(row));
-          res.status(200).json(JSON.stringify(row));
-        });
+    client
+      .query('SELECT * FROM productdetails;', function (err, result) {
+          res.status(200).json(result);
+      });
   });
 });
