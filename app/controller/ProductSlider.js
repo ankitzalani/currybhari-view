@@ -13,12 +13,4 @@ app.controller("productSliderController", ['$scope', '$http', '$q', function(
     $scope.categories = d.promise();
   };
   $scope.getProducts();
-}])
-
-app.controller("productSliderController", ['$scope', function($scope) {
-  $scope.getProducts = function() {
-    return [{
-      "name": "Khaman23131"
-    }];
-  };
 }]);
