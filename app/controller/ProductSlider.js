@@ -10,7 +10,7 @@ app.controller("productSliderController", ['$scope', '$http', '$q', function(
       function(data) {
         d.resolve(data);
       });
-    $scope.categories = d.promise();
+    $scope.categories = d.promise;
   };
   $scope.getProducts();
 }]);
