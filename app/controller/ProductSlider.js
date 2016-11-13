@@ -8,7 +8,8 @@ app.controller("productSliderController", ['$scope', '$http', '$q', function(
       method: 'GET',
       url: 'http://currybhari-view.herokuapp.com/productDetails'
     });
-    $scope.products = [{
+    console.log(prods);
+    $scope.products = prods || [{
       "productId": 1,
       "name": "a",
       "description": "testing",
@@ -16,6 +17,5 @@ app.controller("productSliderController", ['$scope', '$http', '$q', function(
       "image": "./images/home/1.jpg"
     }];
   };
-  alert($scope.getProducts);
   $scope.getProducts();
 }])
