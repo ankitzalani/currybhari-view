@@ -5,7 +5,7 @@ app.controller("CategoryController", ['$scope', '$http', '$q', function(
   $scope.productCategoryController = function() {
     var prods = $http({
       method: 'GET',
-      url: 'http://currybhari-view.herokuapp.com/productDetails'
+      url: 'https://currybhari-view.herokuapp.com/productDetails'
     });
     console.log(prods);
     $scope.categories = prods;
