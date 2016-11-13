@@ -8,7 +8,7 @@
           <ol class="carousel-indicators">
           </ol>
           <div class="carousel-inner" ng-controller="productSliderController">
-            <div ng-repeat="product in products" class="item active">
+            <div ng-repeat="product in getProducts()" class="item active">
               <div ng-if="$first">
                 <div class="col-sm-6">
                   <h1>
