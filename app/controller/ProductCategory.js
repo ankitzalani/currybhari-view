@@ -7,10 +7,7 @@ app.controller("CategoryController", ['$scope', '$http', '$q', function(
       method: 'GET',
       url: 'http://currybhari-view.herokuapp.com/productDetails'
     });
-    $scope.categories = [{
-      "productCategory": "P-1",
-      "categoryProductName": "Mithai",
-    }];
+    $scope.categories = prods;
   };
   $scope.productCategoryController();
 }]);
