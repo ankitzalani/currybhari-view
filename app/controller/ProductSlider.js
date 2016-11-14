@@ -1,4 +1,5 @@
 var app = angular.module("curryBhariApp", []);
+  
 app.controller("productSliderController", ['$scope', '$http', '$q', function(
   $scope,
   $http, $q) {

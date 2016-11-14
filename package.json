@@ -12,7 +12,8 @@
           "cookie-parser": "~1.0.1",
           "serve-favicon": "*",
           "pg": "*",
-          "jade": "*"
+          "jade": "*",
+          "cors": "*"
       },
       "scripts": {
           "start": "node server.js"
