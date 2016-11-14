@@ -7,7 +7,7 @@ app.controller("productSliderController", ['$scope', '$http', '$q', function(
 
   $scope.getProducts = function() {
     var d = $q.defer();
-    $http.get('https://currybhari-view.herokuapp.com/productDetails').success(
+    $http.get('/productDetails').success(
       function(data) {
         $scope.products = data;
         d.resolve(data);
