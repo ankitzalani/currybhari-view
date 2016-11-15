@@ -1,14 +1,13 @@
 var express = require("express");
 var app = express();
 var cors = require('cors')
-var port = process.env.PORT || 80;
+var port = process.env.PORT || 9999;
 
 app.use(cors());
 
-// routes ======================================================================
-require('./routes/endpoints.js')(app);
+require('./server/index.js')(app);
 
-app.use(express.static(__dirname + '/app'));
+app.use(express.static(__dirname + '/client'));
 
 app.listen(port, function() {
     console.log("Listening on port: " + port);
