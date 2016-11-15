@@ -4,8 +4,7 @@ module.service('Products', function(){
   this.list = function() {
     $http.get('https://currybhari-view.herokuapp.com/productDetails').success(
       function(data) {
-        products = data;
-        return products;
+        return data;
       });
   };
 });
