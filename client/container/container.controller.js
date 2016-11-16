@@ -1,7 +1,10 @@
 angular.module('curryBhariApp')
-  .controller("containerController", ['$scope', '$http', '$q', function(
+  .controller('containerController', ['$scope', '$http', '$q', function(
   $scope,
   $http, $q) {
     $scope.category = [];
+
+
+    
 
 }]);
