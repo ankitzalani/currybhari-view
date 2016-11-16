@@ -1,7 +1,7 @@
 var Model = require('objection').Model;
 
 function Brand() {
-  Model.apply(this, arguments);
+    Model.apply(this, arguments);
 }
 
 Model.extend(Brand);
