@@ -6,6 +6,7 @@ var port = process.env.PORT || 9000;
 app.use(cors());
 
 require('./server/index.js')(app);
+require('./server/database/db.js')(app);
 
 app.use(express.static(__dirname + '/client'));
 
