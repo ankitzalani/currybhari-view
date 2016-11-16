@@ -3,24 +3,11 @@ var databaseURL = process.env.DATABASE_URL;
 module.exports = {
 
     development: {
-        client: 'postgresql',
-        connection: {
-            database: databaseURL
-        },
-        pool: {
-            min: 2,
-            max: 10
-        }
+        client: 'pg',
+        connection: process.env.DATABASE_URL
     },
-
     production: {
-        client: 'postgresql',
-        connection: {
-            database: 'example'
-        },
-        pool: {
-            min: 2,
-            max: 10
-        }
+        client: 'pg',
+        connection: process.env.DATABASE_URL
     }
 };
