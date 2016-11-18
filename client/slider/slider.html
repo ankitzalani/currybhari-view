@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section id="slider">
+
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12">
+        <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+          </ol>
+          <div class="carousel-inner" ng-controller="productSliderController">
+            <div ng-repeat="product in products" class="item active">
+              <div ng-if="$first">
+                <div class="col-sm-6">
+                  <h1>
+                    <span>{{product.name}}</span>
+                  </h1>
+                  <p>{{product.description}}</p>
+                  <button type="button" class="btn btn-default get">Get itnow</button>
+                </div>
+                <div class="col-sm-6">
+                  <img ng-src="{{product.image}}" class="girl img-responsive" alt="">
+                </div>
+              </div>
+            </div>
+            <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+            </a>
+            <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
