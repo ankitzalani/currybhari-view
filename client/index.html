@@ -27,8 +27,17 @@
 
 <body ng-app="curryBhariApp">
     <ng-include src="'header/header.html'"></ng-include>
-    <ng-include src="'slider/slider.html'"></ng-include>
-    <ng-include src="'container/container.html'"></ng-include>
+    <!-- <ng-include src="'slider/slider.html'"></ng-include> -->
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <!-- <ng-include src="'sidebar/sidebar.html'"></ng-include> -->
+                <ng-include src="'container/container.html'"></ng-include>
+            </div>
+        </div>
+    </section>
+
     <ng-include src="'footer/footer.html'"></ng-include>
 
     <script src="js/jquery.js"></script>
@@ -41,6 +50,7 @@
     <script src="scripts/angular/angular.min.js"></script>
     <script src="main.js"></script>
     <script src="service/Products.js"></script>
+    <script src="service/Cart.js"></script>
 
     <script src="cart/cart.controller.js"></script>
     <script src="checkout/checkout.controller.js"></script>
@@ -56,4 +66,5 @@
 
 
 </body>
+
 </html>
