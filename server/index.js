@@ -1,7 +1,7 @@
 var pg = require('pg');
 var cors = require('cors');
 var databaseURL = process.env.DATABASE_URL;
-require('./debug/fetch.js');
+var mockObj = require('./debug/fetch.js');
 
 var corsOptions = {
     origin: '*',
@@ -10,13 +10,13 @@ var corsOptions = {
 
 pg.defaults.ssl = true;
 
-var debugg = true;
+var debug = true;
 
 module.exports = function(app) {
     app.get('/productDetails', cors(corsOptions), function(req, res) {
 
         if (debug == true) {
-            fetchMock('productDetails', function(data) {
+            mockObj.fetchMock('productDetails', function(data) {
                 res.send(data);
             });
         } else {

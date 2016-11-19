@@ -1,7 +1,11 @@
 var fs = require('fs');
-require('./fetchconfig.js');
 
-var fetchMock = function(api, callback) {
+var debugFetchConfig = {};
+
+debugFetchConfig['productDetails'] = 'products.json';
+
+
+exports.fetchMock = function(api, callback) {
     var readFile = function(filename, callback) {
         fs.readFile(filename, 'utf8', function(err, data) {
             if (err) {
@@ -14,4 +18,4 @@ var fetchMock = function(api, callback) {
     var defaultPath = 'server/debug/json/';
 
     readFile(defaultPath + debugFetchConfig['productDetails'], callback);
-}
+};
