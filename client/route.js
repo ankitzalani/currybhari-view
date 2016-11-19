@@ -1,22 +1,28 @@
 'use strict';
 
-var app = angular.module("curryBhariApp", ['ui.router']);
+var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification']);
 
-app.config(function($stateProvider, $urlRouterProvider) {
-  $stateProvider
-    .state('container', {
-      title: 'Container',
-      url: '/',
-      templateUrl: 'container/container.html',
-      controller: 'containerController',
-      authenticate: true
+app.config(function($stateProvider, $urlRouterProvider, NotificationProvider) {
+
+    NotificationProvider.setOptions({
+        verticalSpacing: 20,
+        horizontalSpacing: 20
     });
 
     $stateProvider
-      .state('cart', {
-        title: 'Cart',
-        url: '/cart',
-        templateUrl: '/cart/cart.html',
-        controller: 'cartController',
-      });
+        .state('container', {
+            title: 'Container',
+            url: '/',
+            templateUrl: 'container/container.html',
+            controller: 'containerController',
+            authenticate: true
+        });
+
+    $stateProvider
+        .state('cart', {
+            title: 'Cart',
+            url: '/cart',
+            templateUrl: '/cart/cart.html',
+            controller: 'cartController',
+        });
 });

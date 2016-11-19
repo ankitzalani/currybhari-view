@@ -23,6 +23,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="images/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="images/ico/apple-touch-icon-57-precomposed.png">
+
+    <link rel="stylesheet" href="scripts/angular-ui-notification/dist/angular-ui-notification.min.css">
 </head>
 
 <body ng-app="curryBhariApp">
@@ -32,7 +34,7 @@
     <section>
         <div class="container">
             <div class="row" ui-view>
-                <ng-include src="'sidebar/sidebar.html'"></ng-include>
+                <!-- <ng-include src="'sidebar/sidebar.html'"></ng-include> -->
                 <ng-include src="'container/container.html'"></ng-include>
             </div>
         </div>
@@ -51,6 +53,7 @@
     <!-- <script src="scripts/angular-route/angular-route.js"></script> -->
     <script src="scripts/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="scripts/angular-animate/angular-animate.js"></script>
+    <script src="scripts/angular-ui-notification/dist/angular-ui-notification.js"></script>
 
     <script src="main.js"></script>
 
