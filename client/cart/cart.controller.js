@@ -4,4 +4,9 @@ angular.module('curryBhariApp')
   $http, $q, Cart) {
     $scope.products = Cart.products;
 
+    $scope.removeItem = function(product) {
+        $scope.products = $scope.products.filter(function(p){
+            return product.productid !== p.productid;
+        });
+    }
 }]);
