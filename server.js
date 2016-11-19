@@ -1,7 +1,7 @@
 var express = require("express");
 var app = express();
 var cors = require('cors')
-var port = process.env.PORT || 80;
+var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 
 app.use(cors());
 
