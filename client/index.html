@@ -7,8 +7,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>Curry Bhari | Food that Know your Taste</title>
-<!--     <link href="css/bootstrap.min.css" rel="stylesheet" media="screen"> -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/prettyPhoto.css" rel="stylesheet">
     <link href="css/price-range.css" rel="stylesheet">
@@ -28,22 +27,38 @@
 
 <body ng-app="curryBhariApp">
     <ng-include src="'header/header.html'"></ng-include>
-    <ng-include src="'slider/slider.html'"></ng-include>
-    <ng-include src="'container/container.html'"></ng-include>
+    <!-- <ng-include src="'slider/slider.html'"></ng-include> -->
+
+    <section>
+        <div class="container">
+            <div class="row" ui-view>
+                <ng-include src="'sidebar/sidebar.html'"></ng-include>
+                <ng-include src="'container/container.html'"></ng-include>
+            </div>
+        </div>
+    </section>
+
     <ng-include src="'footer/footer.html'"></ng-include>
 
     <script src="js/jquery.js"></script>
-<!--     <script src="js/bootstrap.min.js"></script> -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+    <script src="js/bootstrap.min.js"></script>
     <script src="js/jquery.scrollUp.min.js"></script>
     <script src="js/price-range.js"></script>
     <script src="js/jquery.prettyPhoto.js"></script>
     <script src="js/main.js"></script>
 
-    <script src="scripts/angular/angular.min.js"></script>
+    <script src="scripts/angular/angular.js"></script>
+    <!-- <script src="scripts/angular-route/angular-route.js"></script> -->
+    <script src="scripts/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="scripts/angular-animate/angular-animate.js"></script>
+
     <script src="main.js"></script>
+
+    <!-- Routes -->
+    <script src="route.js"></script>
+
     <script src="service/Products.js"></script>
+    <script src="service/Cart.js"></script>
 
     <script src="cart/cart.controller.js"></script>
     <script src="checkout/checkout.controller.js"></script>
@@ -59,4 +74,5 @@
 
 
 </body>
+
 </html>
