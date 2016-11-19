@@ -1,32 +1,32 @@
 var pg = require('pg');
-var cors = require('cors')
+var cors = require('cors');
 var databaseURL = process.env.DATABASE_URL;
+require('./debug/fetch.js');
+
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+};
 
 pg.defaults.ssl = true;
 
-var corsOptions = {
-  origin: '*',
-  optionsSuccessStatus: 200
-};
+var debugg = true;
 
 module.exports = function(app) {
-  app.get('/productDetails', cors(corsOptions), function(req, res) {
-      pg.connect(databaseURL, function(err, client) {
-          if (err) throw err;
-          client
-              .query('SELECT * FROM productDetails;', function(err, result) {
-                  res.send(result.rows);
-              });
-      });
-  });
+    app.get('/productDetails', cors(corsOptions), function(req, res) {
 
-  app.get('/productDetails/:id', function(req, res) {
-      pg.connect(databaseURL, function(err, client) {
-          if (err) throw err;
-          client
-              .query('SELECT * FROM productDetails where productId=' + req.params.id + ';', function(err, result) {
-                  res.status(200).json(result.rows);
-              });
-      });
-  });
+        if (debug == true) {
+            fetchMock('productDetails', function(data) {
+                res.send(data);
+            });
+        } else {
+            pg.connect(databaseURL, function(err, client) {
+                if (err) throw err;
+                client
+                    .query('SELECT * FROM productDetails;', function(err, result) {
+                        res.send(result.rows);
+                    });
+            });
+        }
+    });
 };

@@ -1,0 +1,13 @@
+[{
+    "productid": "1",
+    "name": "namkeen",
+    "description": "testing",
+    "rate": "$100.00",
+    "image": "./images/home/1.jpg"
+}, {
+    "productid": "2",
+    "name": "sev",
+    "description": "namkeen",
+    "rate": "$100.00",
+    "image": "./images/home/1.jpg"
+}]
