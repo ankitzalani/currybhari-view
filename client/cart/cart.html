@@ -21,28 +21,28 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="product in products">
+						<tr ng-repeat="obj in cart">
 							<td class="cart_product productinfo text-center">
 								<a href=""><img src="images/home/product1.jpg" alt=""></a>
 							</td>
 							<td class="cart_description">
-								<h4><a href="">{{product.name}}</a></h4>
+								<h4><a href="">{{obj.product.name}}</a></h4>
 							</td>
 							<td class="cart_price">
-								<p>{{product.rate}}</p>
+								<p>{{obj.product.rate}}</p>
 							</td>
 							<td class="cart_quantity">
 								<div class="cart_quantity_button">
-									<a class="cart_quantity_up" href=""> + </a>
-									<input class="cart_quantity_input" type="text" name="quantity" value="1" autocomplete="off" size="2">
-									<a class="cart_quantity_down" href=""> - </a>
+									<a class="cart_quantity_up" href="" ng-click="incrementQuantity(obj.id)"> + </a>
+									<input class="cart_quantity_input" type="text" name="quantity" ng-model="obj.quantity" autocomplete="off" size="2">
+									<a class="cart_quantity_down" href="" "decrementQuantity(obj.id)"> - </a>
 								</div>
 							</td>
 							<td class="cart_total">
-								<p class="cart_total_price">{{product.rate}}</p>
+								<p class="cart_total_price">{{obj.total}}</p>
 							</td>
 							<td class="cart_delete">
-								<a class="cart_quantity_delete" href="" ng-click="removeItem(product)"><i class="fa fa-times"></i></a>
+								<a class="cart_quantity_delete" href="" ng-click="removeItem(obj.id)"><i class="fa fa-times"></i></a>
 							</td>
 						</tr>
 					</tbody>
