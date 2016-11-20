@@ -20,19 +20,10 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', function($http, 
         });
     };
 
-    this.incrementQuantity = function(id) {
+    this.changeQuantity = function(id, quantity) {
         for (var i = 0; i < this.cart.length; i++) {
             if (this.cart[i].id == id) {
-                this.cart[i].quantity++;
-                this.cart[i].total = this.cart[i].quantity * this.cart[i].product.rate;
-            }
-        }
-    };
-
-    this.decrementQuantity = function(id) {
-        for (var i = 0; i < this.cart.length; i++) {
-            if (this.cart[i].id == id) {
-                this.cart[i].quantity--;
+                this.cart[i].quantity = quantity;
                 this.cart[i].total = this.cart[i].quantity * this.cart[i].product.rate;
             }
         }

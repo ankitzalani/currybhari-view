@@ -10,11 +10,7 @@ angular.module('curryBhariApp')
             $scope.cart = Cart.cart;
         };
 
-        $scope.incrementQuantity = function(id) {
-            Cart.incrementQuantity(id);
-        };
-
-        $scope.decrementQuantity = function(id) {
-            Cart.decrementQuantity(id);
+        $scope.changeQuantity = function(id, quantity) {
+            Cart.changeQuantity(id, quantity);
         };
     }]);
