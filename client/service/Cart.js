@@ -3,6 +3,7 @@
 angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config', function($http, $q, Config) {
     this.count = 0;
     this.cart = [];
+    this.serviceTax = 20.5;
 
     this.addProduct = function(product) {
         this.cart.push({
@@ -29,22 +30,20 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config', functi
     };
 
     this.calculatePayment = function() {
-        Config.getConfig().then(function(promise) {
-            var config = promise.data;
+        var self = this;
 
-            var subtotal = 0;
-            this.cart.forEach(function(obj) {
-                subtotal += parseFloat(obj.total);
-            });
-
-            var tax = (subtotal * config.serviceTax) / 100;
-            var grandTotal = subtotal + tax;
-
-            return {
-                'subTotal': subtotal,
-                'tax': tax,
-                'grandTotal': grandTotal
-            };
+        var subtotal = 0;
+        self.cart.forEach(function(obj) {
+            subtotal += parseFloat(obj.total);
         });
+
+        var tax = (subtotal * this.serviceTax) / 100;
+        var grandTotal = subtotal + tax;
+
+        return {
+            'subTotal': subtotal,
+            'tax': tax,
+            'grandTotal': grandTotal
+        };
     };
 }]);

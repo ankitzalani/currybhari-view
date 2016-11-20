@@ -8,18 +8,13 @@ angular.module('curryBhariApp').service('Config', ['$http', '$q', function($http
     this.config = {};
 
     this.getConfig = function() {
-        if (!this.config) {
-            var promise = $http.get(appconfig.host + '/config').success(
-                function(data) {
-                    this.config = data;
-                    return data;
-                });
+        var self = this;
+        var promise = $http.get(appconfig.host + '/config').success(
+            function(data) {
+                self.config = data;
+                return data;
+            });
 
-            return promise;
-        } else {
-            var defer = $q.defer();
-            defer.resolve(this.config);
-            return defer.promise;
-        }
+        return promise;
     };
 }]);
