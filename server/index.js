@@ -31,6 +31,7 @@ module.exports = function(app) {
     });
 
     app.get('/config', cors(corsOptions), function(req, res) {
+        console.log('config');
         if (debug == true) {
             mockObj.fetchMock('config', function(data) {
                 res.send(data);

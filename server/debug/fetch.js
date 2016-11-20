@@ -3,6 +3,7 @@ var fs = require('fs');
 var debugFetchConfig = {};
 
 debugFetchConfig['productDetails'] = 'products.json';
+debugFetchConfig['config'] = 'config.json';
 
 
 exports.fetchMock = function(api, callback) {
@@ -17,5 +18,5 @@ exports.fetchMock = function(api, callback) {
 
     var defaultPath = 'server/debug/json/';
 
-    readFile(defaultPath + debugFetchConfig['productDetails'], callback);
+    readFile(defaultPath + debugFetchConfig[api], callback);
 };
