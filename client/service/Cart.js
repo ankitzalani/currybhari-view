@@ -3,7 +3,6 @@
 angular.module('curryBhariApp').service('Cart', ['$http', '$q', function($http, $q) {
     this.count = 0;
     this.cart = [];
-    this.grandTotal = 0;
 
     this.addProduct = function(product) {
         this.cart.push({
@@ -27,5 +26,21 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', function($http, 
                 this.cart[i].total = this.cart[i].quantity * this.cart[i].product.rate;
             }
         }
+    };
+
+    this.calculatePayment = function() {
+        var subtotal = 0;
+        this.cart.forEach(function(obj) {
+            subtotal += parseFloat(obj.total);
+        });
+
+        var tax = (subtotal * 20.5)/100;
+        var grandTotal = subtotal + tax;
+
+        return {
+            'subTotal': subtotal,
+            'tax': tax,
+            'grandTotal': grandTotal
+        };
     };
 }]);

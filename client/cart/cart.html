@@ -1,5 +1,5 @@
-<div class="panel">
-    <div ng-controller="cartController">
+<div class="panel"  ng-controller="cartController">
+    <div>
         <section id="cart_items">
             <div class="container">
                 <div class="breadcrumbs">
@@ -87,15 +87,15 @@
                                 <li class="single_field">
                                     <label>Country:</label>
                                     <select>
-									<option>United States</option>
-									<option>Bangladesh</option>
-									<option>UK</option>
-									<option>India</option>
-									<option>Pakistan</option>
-									<option>Ucrane</option>
-									<option>Canada</option>
-									<option>Dubai</option>
-								</select>
+                    									<option>United States</option>
+                    									<option>Bangladesh</option>
+                    									<option>UK</option>
+                    									<option>India</option>
+                    									<option>Pakistan</option>
+                    									<option>Ucrane</option>
+                    									<option>Canada</option>
+                    									<option>Dubai</option>
+                    								</select>
 
                                 </li>
                                 <li class="single_field">
@@ -124,10 +124,13 @@
                     <div class="col-sm-6">
                         <div class="total_area">
                             <ul>
-                                <li>Cart Sub Total <span>$59</span></li>
-                                <li>Eco Tax <span>$2</span></li>
-                                <li>Shipping Cost <span>Free</span></li>
-                                <li>Total <span>$61</span></li>
+                                <li>Cart Sub Total <span>{{payment.subTotal}}</span></li>
+                                <li>Discount <span>0</span></li>
+                                <li>Credit <span>0</span></li>
+                                <li>Sub Total <span>0</span></li>
+                                <li>Delivery Charges <span>Free</span></li>
+                                <li>Tax <span>{{payment.tax}}</span></li>
+                                <li>Total Amount <span>{{payment.grandTotal}}</span></li>
                             </ul>
                             <a class="btn btn-default update" href="">Update</a>
                             <a class="btn btn-default check_out" href="">Check Out</a>
