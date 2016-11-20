@@ -29,4 +29,20 @@ module.exports = function(app) {
             });
         }
     });
+
+    app.get('/config', cors(corsOptions), function(req, res) {
+        if (debug == true) {
+            mockObj.fetchMock('config', function(data) {
+                res.send(data);
+            });
+        } else {
+            pg.connect(databaseURL, function(err, client) {
+                if (err) throw err;
+                client
+                    .query('SELECT * FROM CONFIG;', function(err, result) {
+                        res.send(result.rows);
+                    });
+            });
+        }
+    });
 };

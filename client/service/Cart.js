@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('curryBhariApp').service('Cart', ['$http', '$q', function($http, $q) {
+angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config', function($http, $q, Config) {
     this.count = 0;
     this.cart = [];
 
@@ -29,18 +29,22 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', function($http, 
     };
 
     this.calculatePayment = function() {
-        var subtotal = 0;
-        this.cart.forEach(function(obj) {
-            subtotal += parseFloat(obj.total);
+        Config.getConfig().then(function(promise) {
+            var config = promise.data;
+
+            var subtotal = 0;
+            this.cart.forEach(function(obj) {
+                subtotal += parseFloat(obj.total);
+            });
+
+            var tax = (subtotal * config.serviceTax) / 100;
+            var grandTotal = subtotal + tax;
+
+            return {
+                'subTotal': subtotal,
+                'tax': tax,
+                'grandTotal': grandTotal
+            };
         });
-
-        var tax = (subtotal * 20.5)/100;
-        var grandTotal = subtotal + tax;
-
-        return {
-            'subTotal': subtotal,
-            'tax': tax,
-            'grandTotal': grandTotal
-        };
     };
 }]);

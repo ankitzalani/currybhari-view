@@ -25,4 +25,12 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider) {
             templateUrl: '/cart/cart.html',
             controller: 'cartController',
         });
+
+        $stateProvider
+            .state('checkout', {
+                title: 'Checkout',
+                url: '/checkout',
+                templateUrl: '/checkout/checkout.html',
+                controller: 'checkoutController',
+            });
 });
