@@ -6,5 +6,5 @@ module.exports = {
     // OAuth 2.0
     FACEBOOK_SECRET: process.env.FACEBOOK_SECRET || 'b57a5c834cb8dc31bec6cf3ace6069fd',
 
-    GOOGLE_SECRET: process.env.GOOGLE_SECRET || 'YOUR_GOOGLE_CLIENT_SECRET',
+    GOOGLE_SECRET: process.env.GOOGLE_SECRET || 'zDMwd4b-AH1wkEf4xxyXc5Lr',
 };

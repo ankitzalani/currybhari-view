@@ -15,7 +15,7 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
   });
 
   $authProvider.google({
-      clientId: 'Google Client ID'
+      clientId: '947748914062-cp7sdk6g0uehgt8nhlp2cjvenpfcj4bd.apps.googleusercontent.com'
   });
 
 

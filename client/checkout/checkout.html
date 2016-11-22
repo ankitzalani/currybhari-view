@@ -16,16 +16,11 @@
                     <p>Checkout options</p>
                     <ul class="nav">
                         <li>
-                            <label><input type="checkbox" ng-click="login()"> Login</label>
+                            <label><button class="btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
+                            </label>
                         </li>
                         <li>
-                            <label><input type="checkbox"> Register Account</label>
-                        </li>
-                        <li>
-                            <label><input type="checkbox"> Guest Checkout</label>
-                        </li>
-                        <li>
-                            <a href=""><i class="fa fa-times"></i>Cancel</a>
+                            <label><button class="btn-google" ng-click="authenticate('google')">Sign in with Google</button></label>
                         </li>
                     </ul>
                 </div>
