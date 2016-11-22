@@ -1,4 +1,4 @@
-<section id="cart_items">
+<section id="cart_items" ng-controller="checkoutController">
     <div class="container">
         <div class="breadcrumbs">
             <ol class="breadcrumb">
@@ -15,6 +15,9 @@
                     <h3>New User</h3>
                     <p>Checkout options</p>
                     <ul class="nav">
+                        <li>
+                            <label><input type="checkbox" ng-click="login()"> Login</label>
+                        </li>
                         <li>
                             <label><input type="checkbox"> Register Account</label>
                         </li>
@@ -118,16 +121,10 @@
                 $("#accordion").accordion();
             });
         </script>
-
-
-
-
-
-
-
-
-
-
-    </div>
 </section>
-<!--/#cart_items-->
+
+
+<div id="loginDialogue" title="Login">
+  <p>Choose any method below to login:</p>
+  
+</div>
