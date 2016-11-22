@@ -1,1 +1,1 @@
-var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification']);
+var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification', 'satellizer']);

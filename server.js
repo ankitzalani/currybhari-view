@@ -8,6 +8,7 @@ app.use(cors());
 
 require('./server/index.js')(app);
 require('./server/database/db.js')(app);
+require("./server/auth.js")(app);
 
 app.use(express.static(__dirname + '/client'));
 

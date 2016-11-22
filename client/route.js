@@ -1,8 +1,23 @@
 'use strict';
 
-var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification']);
+var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification', 'satellizer']);
 
-app.config(function($stateProvider, $urlRouterProvider, NotificationProvider) {
+app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $authProvider) {
+
+  $authProvider.facebook({
+      clientId: '1028093290647214'
+  });
+
+  // Optional: For client-side use (Implicit Grant), set responseType to 'token' (default: 'code')
+  $authProvider.facebook({
+      clientId: '1028093290647214',
+      responseType: 'token'
+  });
+
+  $authProvider.google({
+      clientId: 'Google Client ID'
+  });
+
 
     NotificationProvider.setOptions({
         verticalSpacing: 20,

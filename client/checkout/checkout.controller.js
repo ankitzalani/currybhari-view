@@ -1,9 +1,12 @@
 angular.module('curryBhariApp')
-  .controller("checkoutController", ['$scope', '$http', '$q', function(
-  $scope,
-  $http, $q) {
-    $scope.login = function() {
-        $( "#loginDialogue" ).dialog();
-    };
+    .controller("checkoutController", ['$scope', '$http', '$q','$auth', function(
+        $scope,
+        $http, $q, $auth) {
+        $scope.login = function() {
+            $("#loginDialogue").dialog();
+        };
 
-}]);
+        $scope.authenticate = function(provider) {
+            $auth.authenticate(provider);
+        };
+    }]);

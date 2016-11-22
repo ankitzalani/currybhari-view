@@ -12,6 +12,8 @@ pg.defaults.ssl = true;
 
 var debug = true;
 
+
+
 module.exports = function(app) {
     app.get('/productDetails', cors(corsOptions), function(req, res) {
 
