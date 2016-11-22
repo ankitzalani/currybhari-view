@@ -15,45 +15,22 @@ var request = require('request');
 
 var config = require('./config');
 
+var corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200
+};
+
 module.exports = function(app) {
 
-var userSchema = new mongoose.Schema({
-  email: { type: String, unique: true, lowercase: true },
-  password: { type: String, select: false },
-  displayName: String,
-  picture: String,
-  bitbucket: String,
-  facebook: String,
-  foursquare: String,
-  google: String,
-  github: String,
-  instagram: String,
-  linkedin: String,
-  live: String,
-  yahoo: String,
-  twitter: String,
-  twitch: String,
-  spotify: String
-});
-
-userSchema.pre('save', function(next) {
-  var user = this;
-  if (!user.isModified('password')) {
-    return next();
-  }
-  bcrypt.genSalt(10, function(err, salt) {
-    bcrypt.hash(user.password, salt, function(err, hash) {
-      user.password = hash;
-      next();
-    });
-  });
-});
-
-userSchema.methods.comparePassword = function(password, done) {
-  bcrypt.compare(password, this.password, function(err, isMatch) {
-    done(err, isMatch);
-  });
+var User = function() {
+  this.email = { type: String, unique: true, lowercase: true };
+  this.password = { type: String, select: false };
+  this.displayName = String;
+  this.picture = String;
+  this.facebook = String;
+  this.google= String;
 };
+
 
 // var User = mongoose.model('User', userSchema);
 //
@@ -199,7 +176,7 @@ app.post('/auth/signup', function(req, res) {
  | Login with Google
  |--------------------------------------------------------------------------
  */
-app.post('/auth/google', function(req, res) {
+app.post('/auth/google', cors(corsOptions),  function(req, res) {
   var accessTokenUrl = 'https://accounts.google.com/o/oauth2/token';
   var peopleApiUrl = 'https://www.googleapis.com/plus/v1/people/me/openIdConnect';
   var params = {
@@ -220,6 +197,15 @@ app.post('/auth/google', function(req, res) {
       if (profile.error) {
         return res.status(500).send({message: profile.error.message});
       }
+
+      var user = new User();
+      user.google = profile.sub;
+      user.picture = profile.picture.replace('sz=50', 'sz=200');
+      user.displayName = profile.name;
+      var token = createJWT(user);
+      res.send({ token: token, user: user });
+
+      /**************************************************
       // Step 3a. Link user accounts.
       if (req.header('Authorization')) {
         User.findOne({ google: profile.sub }, function(err, existingUser) {
@@ -257,6 +243,7 @@ app.post('/auth/google', function(req, res) {
           });
         });
       }
+      **************************************************/
     });
   });
 });

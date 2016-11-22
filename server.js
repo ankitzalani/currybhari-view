@@ -3,8 +3,12 @@ var app = express();
 var cors = require('cors')
 var port = process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 8080;
 var ip = process.env.OPENSHIFT_NODEJS_IP;
+var bodyParser = require('body-parser');
 
 app.use(cors());
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 require('./server/index.js')(app);
 require('./server/database/db.js')(app);

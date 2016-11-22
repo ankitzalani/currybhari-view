@@ -12,8 +12,10 @@
             <h3 class="accordianHeader">Login Information</h3>
             <div>
                 <div class="checkout-options">
-                    <h3>New User</h3>
-                    <p>Checkout options</p>
+                    <p>Click below to login</p>
+                    <p>Welcome {{user.displayName}}</p>
+                    <img src="{{user.picture}}"/>
+
                     <ul class="nav">
                         <li>
                             <label><button class="btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
