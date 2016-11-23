@@ -1,4 +1,4 @@
-<header id="header">
+<header id="header" ng-controller="headerController">
     <!--header-->
     <div class="header_top">
         <!--header_top-->
@@ -46,7 +46,8 @@
                             <!-- <li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li> -->
                             <li><a ui-sref="checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a ui-sref="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li><a href="login.html"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><a href="#" ng-click="showLoginDialogue()"><i class="fa fa-lock"></i> Login</a></li>
+                            <li><img src="{{user.picture}}" width="32px"/></li>
                         </ul>
                     </div>
                 </div>
@@ -90,4 +91,15 @@
             </div>
         </div>
     </div> -->
+    <div id="loginDialogue" title="Login" style="display:none">
+      <ul class="nav">
+          <li>
+              <label><button class="btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
+              </label>
+          </li>
+          <li>
+              <label><button class="btn-google" ng-click="authenticate('google')">Sign in with Google</button></label>
+          </li>
+      </ul>
+    </div>
 </header>

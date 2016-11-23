@@ -12,9 +12,8 @@
             <h3 class="accordianHeader">Login Information</h3>
             <div>
                 <div class="checkout-options">
-                    <p>Click below to login</p>
                     <p>Welcome {{user.displayName}}</p>
-                    <img src="{{user.picture}}"/>
+                    <img src="{{user.picture}}" width="32px"/>
 
                     <ul class="nav">
                         <li>
@@ -100,7 +99,6 @@
 
 
 <div id="loginDialogue" title="Login">
-  <p>Choose any method below to login:</p>
   <button ng-click="authenticate('facebook')">Sign in with Facebook</button>
   <button ng-click="authenticate('google')">Sign in with Google</button>
 </div>

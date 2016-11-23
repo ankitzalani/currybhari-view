@@ -246,7 +246,7 @@ module.exports = function(app) {
                 user.picture = profile.picture.replace('sz=50', 'sz=200');
                 user.displayName = profile.name;
                 var token = createJWT(user);
-                res.send({
+                res.send({/
                     token: token,
                     user: user
                 });
@@ -689,10 +689,9 @@ module.exports = function(app) {
                     });
                 }
                 if (req.header('Authorization')) {
-
                     var fbUser = new User();
                     fbUser.facebook = profile.id;
-                    fbUser.picture = 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=large';
+                    fbUser.picture = 'https://graph.facebook.com/v2.3/' + profile.id + '/picture?type=small';
                     fbUser.displayName = profile.name;
                     var token = createJWT(fbUser);
                     res.send({
