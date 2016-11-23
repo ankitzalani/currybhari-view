@@ -8,11 +8,11 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
       clientId: '1028093290647214'
   });
 
-  // Optional: For client-side use (Implicit Grant), set responseType to 'token' (default: 'code')
-  $authProvider.facebook({
-      clientId: '1028093290647214',
-      responseType: 'token'
-  });
+  // // Optional: For client-side use (Implicit Grant), set responseType to 'token' (default: 'code')
+  // $authProvider.facebook({
+  //     clientId: '1028093290647214',
+  //     responseType: 'token'
+  // });
 
   $authProvider.google({
       clientId: '947748914062-cp7sdk6g0uehgt8nhlp2cjvenpfcj4bd.apps.googleusercontent.com'
