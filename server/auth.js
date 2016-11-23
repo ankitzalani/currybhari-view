@@ -246,7 +246,7 @@ module.exports = function(app) {
                 user.picture = profile.picture.replace('sz=50', 'sz=200');
                 user.displayName = profile.name;
                 var token = createJWT(user);
-                res.send({/
+                res.send({
                     token: token,
                     user: user
                 });
