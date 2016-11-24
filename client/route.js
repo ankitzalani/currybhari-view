@@ -8,12 +8,6 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
       clientId: '1028093290647214'
   });
 
-  // // Optional: For client-side use (Implicit Grant), set responseType to 'token' (default: 'code')
-  // $authProvider.facebook({
-  //     clientId: '1028093290647214',
-  //     responseType: 'token'
-  // });
-
   $authProvider.google({
       clientId: '947748914062-cp7sdk6g0uehgt8nhlp2cjvenpfcj4bd.apps.googleusercontent.com'
   });
@@ -48,4 +42,13 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
                 templateUrl: '/checkout/checkout.html',
                 controller: 'checkoutController',
             });
+
+      $stateProvider
+            .state('productDetails', {
+                title: 'Product Details',
+                url: '/productDetails',
+                templateUrl: '/product-details/product-details.html',
+                controller: 'productDetailsController',
+            });
+
 });
