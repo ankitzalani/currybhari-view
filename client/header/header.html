@@ -47,7 +47,7 @@
                             <li><a ui-sref="checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
                             <li><a ui-sref="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li><a href="#" ng-click="showLoginDialogue()"><i class="fa fa-lock"></i> Login</a></li>
-                            <li><img src="{{userService.user.picture}}" width="32px"/></li>
+                            <li ng-if="userService.user.picture"><img src="{{userService.user.picture}}" width="32px"/></li>
                         </ul>
                     </div>
                 </div>
