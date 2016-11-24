@@ -1,17 +1,14 @@
 'use strict';
 
-var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification', 'satellizer']);
-
+var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification', 'satellizer', 'ngCookies']);
 app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $authProvider) {
+    $authProvider.facebook({
+        clientId: '1028093290647214'
+    });
 
-  $authProvider.facebook({
-      clientId: '1028093290647214'
-  });
-
-  $authProvider.google({
-      clientId: '947748914062-cp7sdk6g0uehgt8nhlp2cjvenpfcj4bd.apps.googleusercontent.com'
-  });
-
+    $authProvider.google({
+        clientId: '947748914062-cp7sdk6g0uehgt8nhlp2cjvenpfcj4bd.apps.googleusercontent.com'
+    });
 
     NotificationProvider.setOptions({
         verticalSpacing: 20,
@@ -35,20 +32,19 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
             controller: 'cartController',
         });
 
-        $stateProvider
-            .state('checkout', {
-                title: 'Checkout',
-                url: '/checkout',
-                templateUrl: '/checkout/checkout.html',
-                controller: 'checkoutController',
-            });
+    $stateProvider
+        .state('checkout', {
+            title: 'Checkout',
+            url: '/checkout',
+            templateUrl: '/checkout/checkout.html',
+            controller: 'checkoutController',
+        });
 
-      $stateProvider
-            .state('productDetails', {
-                title: 'Product Details',
-                url: '/productDetails',
-                templateUrl: '/product-details/product-details.html',
-                controller: 'productDetailsController',
-            });
-
+    $stateProvider
+        .state('productDetails', {
+            title: 'Product Details',
+            url: '/productDetails',
+            templateUrl: '/product-details/product-details.html',
+            controller: 'productDetailsController',
+        });
 });

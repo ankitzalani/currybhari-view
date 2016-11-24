@@ -1,8 +1,8 @@
 'use strict';
 
-angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config', function($http, $q, Config) {
+angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config','$cookieStore', function($http, $q, Config, $cookieStore) {
     this.count = 0;
-    this.cart = [];
+    this.cart = $cookieStore.get('cart') || [];
     this.serviceTax = 20.5;
 
     this.addProduct = function(product) {
@@ -12,12 +12,14 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config', functi
             'quantity': 1,
             'total': product.rate
         });
+        $cookieStore.put('cart', this.cart);
     };
 
     this.removeProduct = function(id) {
         this.cart = this.cart.filter(function(temp) {
             return id !== temp.id;
         });
+        $cookieStore.put('cart', this.cart);
     };
 
     this.changeQuantity = function(id, quantity) {
