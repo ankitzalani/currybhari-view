@@ -14,4 +14,8 @@ angular.module('curryBhariApp').service('UserService', ['$http', '$q', '$auth', 
             self.user = res.data.user;
         });
     };
+
+    this.logout = function() {
+        this.user = {};
+    }
 }]);
