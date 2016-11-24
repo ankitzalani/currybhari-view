@@ -1,20 +1,9 @@
 angular.module('curryBhariApp')
-    .controller("checkoutController", ['$scope', '$http', '$q','$auth', function(
+    .controller("checkoutController", ['$scope', '$http', '$q', '$auth', 'UserService', function(
         $scope,
-        $http, $q, $auth) {
-
-        $scope.user = {};
-
-        $scope.login = function() {
-            $("#loginDialogue").dialog();
-        };
+        $http, $q, $auth, UserService) {
 
         $scope.authenticate = function(provider) {
-            var authPromise = $auth.authenticate(provider);
-
-            authPromise.then(function(res) {
-                console.log(res.data);
-                $scope.user = res.data.user;
-            });
+            UserService.authenticate(provider);
         };
     }]);
