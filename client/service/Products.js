@@ -1,27 +1,22 @@
 'use strict';
 
 var appconfig = {
-  host: 'https://currybhari-view.herokuapp.com'
+    host: ''
 };
 
-angular.module('curryBhariApp').service('Products', ['$http', '$q', function(
-  $http, $q) {
-  this.list = function() {
+angular.module('curryBhariApp').service('Products', ['$http', '$q','$rootScope', function($http, $q,$rootScope) {
+    this.searchText = '';
 
-    var promise = $http.get(appconfig.host + '/productDetails').success(
-      function(data) {
-        return data;
-      });
+    this.list = function() {
+        var promise = $http.get(appconfig.host + '/productDetails').success(
+            function(data) {
+                return data;
+            });
+        return promise;
+    };
 
-    return promise;
-  };
-
-  this.getProduct = function(id) {
-    var promise = $http.get('http://localhost:9000/product?id=1').success(
-      function(data) {
-        return data;
-      });
-
-    return promise;
-  }
+    this.filter = function(searchText) {
+        this.searchText = searchText;
+        $rootScope.$broadcast('products.filter', searchText);
+    };
 }]);

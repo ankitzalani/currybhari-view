@@ -3,10 +3,12 @@ angular.module('curryBhariApp')
         $scope,
         $http, $q, Products, Cart, Notification) {
         $scope.products = [];
+        $scope.allProducts = [];
 
-        var getProducts = function() {
+        $scope.getProducts = function() {
             Products.list().then(function(promise) {
                 $scope.products = promise.data;
+                $scope.allProducts = promise.data;
             });
         };
 
@@ -15,10 +17,16 @@ angular.module('curryBhariApp')
                 Cart.addProduct(product);
                 Notification.success({
                     message: product.name + ' added to cart',
-                    delay:1000
+                    delay: 1000
                 });
             }
         };
 
-        getProducts();
+        $scope.$on('products.filter', function(newState) {
+            $scope.products = $scope.allProducts.filter(function(product) {
+                return product.name.toLowerCase().indexOf(Products.searchText.toLowerCase()) !== -1;
+            });
+        });
+
+        $scope.getProducts();
     }]);

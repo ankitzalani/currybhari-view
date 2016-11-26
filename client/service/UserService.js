@@ -1,7 +1,7 @@
 'use strict';
 
 var appconfig = {
-    host: 'https://currybhari-view.herokuapp.com'
+    host: ''
 };
 
 angular.module('curryBhariApp').service('UserService', ['$http', '$q', '$auth', '$cookieStore', function($http, $q, $auth, $cookieStore) {
