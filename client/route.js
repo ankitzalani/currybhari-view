@@ -46,5 +46,6 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
             url: '/productDetails',
             templateUrl: '/product-details/product-details.html',
             controller: 'productDetailsController',
+            params : { id: null, }
         });
 });

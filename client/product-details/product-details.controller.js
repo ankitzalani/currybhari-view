@@ -1,9 +1,10 @@
 angular.module('curryBhariApp')
-  .controller("productDetailsController", ['$scope', '$http', '$q', 'Products',
-    function(
+  .controller("productDetailsController", ['$stateParams','$scope', '$http', '$q', 'Products',
+    function($stateParams,
       $scope,
       $http, $q, Products) {
       $scope.product = [];
+      $scope.id = $stateParams.id;
 
       var getProduct = function(id) {
         Products.getProduct(id).then(function(promise) {
@@ -11,6 +12,6 @@ angular.module('curryBhariApp')
         });
       };
 
-      getProduct(1);
+      getProduct($scope.id);
     }
   ]);

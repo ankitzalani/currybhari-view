@@ -15,6 +15,14 @@ angular.module('curryBhariApp').service('Products', ['$http', '$q','$rootScope',
         return promise;
     };
 
+    this.getProduct = function(id) {
+        var promise = $http.get(appconfig.host + '/product/' + id).success(
+            function(data) {
+                return data;
+            });
+        return promise;
+    };
+
     this.filter = function(searchText) {
         this.searchText = searchText;
         $rootScope.$broadcast('products.filter', searchText);
