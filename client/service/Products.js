@@ -8,7 +8,7 @@ angular.module('curryBhariApp').service('Products', ['$http', '$q','$rootScope',
     this.searchText = '';
 
     this.list = function() {
-        var promise = $http.get(appconfig.host + '/productDetails').success(
+        var promise = $http.get(appconfig.host + '/products').success(
             function(data) {
                 return data;
             });
