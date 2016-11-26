@@ -11,7 +11,7 @@ module.exports = function(app) {
     app.get('/products', cors(corsOptions), function(req, res) {
         product.find().exec(function(error, products) {
             if (error) {
-                return res.status(500).send(error);
+                  return res.status(500).send(error);
             }
             return res.status(200).json(products);
         });
