@@ -9,6 +9,10 @@ var corsOptions = {
 
 var debug = false;
 
+var convertToMoney = function(num) {
+    return (num/100).toFixed(2);
+}
+
 module.exports = function(app) {
     app.get('/products', cors(corsOptions), function(req, res) {
         if (debug === false) {
@@ -16,6 +20,11 @@ module.exports = function(app) {
                 if (error) {
                     return res.status(500).send(error);
                 }
+
+                products.forEach(function(product){
+                    product.rate = convertToMoney(product.rate);
+                });
+
                 return res.status(200).json(products);
             });
         } else {
@@ -32,6 +41,7 @@ module.exports = function(app) {
                 if (error) {
                     return res.status(500).send(error);
                 }
+                product.rate = convertToMoney(product.rate);
 
                 return res.status(200).json(product);
             });

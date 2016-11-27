@@ -38,7 +38,7 @@
                             <tbody>
                                 <tr ng-repeat="obj in cart">
                                     <td class="cart_product productinfo text-center">
-                                        <a href=""><img src="images/home/Product1.jpg" alt=""></a>
+                                        <a href=""><img ng-src="{{obj.product.image}}" alt=""></a>
                                     </td>
                                     <td class="cart_description">
                                         <h4><a href="">{{obj.product.name}}</a></h4>

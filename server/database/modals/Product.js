@@ -14,14 +14,4 @@ var ProductSchema = new Schema({
     otherImages: [String]
 });
 
-// Getter
-ProductSchema.path('rate').get(function(num) {
-    return (num / 100).toFixed(2);
-});
-
-// Setter
-ProductSchema.path('rate').set(function(num) {
-    return num * 100;
-});
-
 module.exports = mongoose.model('Product', ProductSchema);

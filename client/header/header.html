@@ -14,7 +14,7 @@
                     </div>
                 </div>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" ng-model="searchText" ng-change="search()" />
+                    <input type="text" class="form-control" ng-model="searchText" ng-change="search()" ng-keydown="$event.which === 13 && navigateToContainer()" />
                 </div>
                 <div class="col-sm-4">
                     <div class="shop-menu pull-right">

@@ -1,17 +1,27 @@
 'use strict';
-angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config','$cookieStore', function($http, $q, Config, $cookieStore) {
+angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config', '$cookieStore', function($http, $q, Config, $cookieStore) {
     this.count = 0;
     this.cart = this.cart || $cookieStore.get('cart') || [];
     this.serviceTax = 20.5;
 
     this.addProduct = function(product, quantity) {
-        this.cart.push({
-            'id': this.count++,
-            'product': product,
-            'rate': product.rate,
-            'quantity': (quantity || 1),
-            'total': product.rate * (quantity || 1)
+        var self = this;
+        var itemExists = false;
+        self.cart.forEach(function(obj) {
+            if (obj.id === product._id) {
+                itemExists = true;
+            }
         });
+
+        if (!itemExists) {
+            this.cart.push({
+                'id': product._id,
+                'product': product,
+                'rate': product.rate,
+                'quantity': (quantity || 1),
+                'total': product.rate * (quantity || 1)
+            });
+        }
         $cookieStore.put('cart', this.cart);
     };
 
@@ -23,7 +33,7 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config','$cooki
     };
 
     this.changeQuantity = function(id, quantity) {
-        if(quantity <= 0) return;
+        if (quantity <= 0) return;
         quantity = parseInt(quantity);
         for (var i = 0; i < this.cart.length; i++) {
             if (this.cart[i].id == id) {
