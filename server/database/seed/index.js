@@ -28,37 +28,44 @@ Product.find(function(err, data) {
             "name": "namkeen",
             "description": "testing",
             "rate": 100,
-            "image": "./images/home/1.jpg"
+            "image": "./images/home/1.jpg",
+            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
         }, {
             "name": "sev",
             "description": "namkeen",
             "rate": 200,
-            "image": "./images/home/1.jpg"
+            "image": "./images/home/1.jpg",
+            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
         }, {
             "name": "Gulab Jamun",
             "description": "Gujrat",
             "rate": 460,
-            "image": "./images/home/1.jpg"
+            "image": "./images/home/1.jpg",
+            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
         }, {
             "name": "Besan Laddu",
             "description": "Special Laddu",
             "rate": 570,
-            "image": "./images/home/1.jpg"
+            "image": "./images/home/1.jpg",
+            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
         }, {
             "name": "Chakli",
             "description": "Diwali Chakli",
             "rate": 79,
-            "image": "./images/home/1.jpg"
+            "image": "./images/home/1.jpg",
+            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
         }, {
             "name": "Pani Puri",
             "description": "Special Indore Pani Puri",
             "rate": 95.8,
-            "image": "./images/home/1.jpg"
+            "image": "./images/home/1.jpg",
+            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
         }, {
             "name": "Vada",
             "description": "South Special",
             "rate": 100,
-            "image": "./images/home/1.jpg"
+            "image": "./images/home/1.jpg",
+            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
         }, function() {
             console.log('Populating Products');
         });

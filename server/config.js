@@ -1,6 +1,6 @@
 module.exports = {
     // App Settings
-    MONGO_URI: process.env.MONGODB_URI,
+    MONGO_URI: process.env.MONGODB_URI || 'mongodb://ankit:l0ve!slife@ds051334.mlab.com:51334/currybhari',
     TOKEN_SECRET: process.env.TOKEN_SECRET || 'abc123',
 
     // OAuth 2.0

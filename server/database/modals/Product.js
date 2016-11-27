@@ -10,7 +10,8 @@ var ProductSchema = new Schema({
     name: String,
     description: String,
     rate: Number,
-    image: String
+    image: String,
+    otherImages: [String]
 });
 
 // Getter
