@@ -2,9 +2,9 @@ var fs = require('fs');
 
 var debugFetchConfig = {};
 
-debugFetchConfig['productDetails'] = 'products.json';
+debugFetchConfig['products'] = 'products.json';
+debugFetchConfig['product'] = 'product.json';
 debugFetchConfig['config'] = 'config.json';
-
 
 exports.fetchMock = function(api, callback) {
     var readFile = function(filename, callback) {
