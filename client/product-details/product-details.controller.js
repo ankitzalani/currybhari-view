@@ -17,7 +17,7 @@ angular.module('curryBhariApp')
                 Cart.addProduct(product, parseInt($scope.quantity));
                 Notification.success({
                     message: product.name + ' added to cart',
-                    delay: 1000
+                    delay: 1000, positionY: 'bottom', positionX: 'right'
                 });
             };
 
