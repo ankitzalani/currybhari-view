@@ -14,6 +14,11 @@
 							<!-- Wrapper for slides -->
 							<div class="carousel-inner">
 								<div class="item active">
+									<a ng-repeat="img in product.otherImages track by $index" href="" ng-if="$index < 3">
+										<img ng-src="{{img}}" alt="" width="90px">
+									</a>
+								</div>
+								<!-- <div class="item active">
 									<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
 									<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
 									<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
@@ -27,7 +32,7 @@
 									<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
 									<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
 									<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-								</div>
+								</div> -->
 							</div>
 							<!-- Controls -->
 							<a class="left item-control" href="#similar-product" data-slide="prev">
@@ -42,13 +47,12 @@
 					<div class="col-sm-7">
 						<div class="product-information" ng-controller="productDetailsController">
 							<!--/product-information-->
-							<h2>{{product.name}}</h2>
-							 {{product.description}}
+							<h2>{{product.name}}</h2> {{product.description}}
 							<img src="images/product-details/new.jpg" class="newarrival" alt="" />
 							<span>
 									<span>&#8377; {{product.rate}}</span>
 							<label>Quantity:</label>
-							<input type="text" value="3" ng-model="quantity" />
+							<input type="text" value="3" ng-model="quantity"/>
 							<button type="button" class="btn btn-fefault cart" ng-click="addToCart(product)">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
