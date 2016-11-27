@@ -1,74 +1,76 @@
-	<section ng-controller="productDetailsController">
-		<div class="container">
-			<div class="row">
+<section ng-controller="productDetailsController">
+	<div class="container">
+		<div class="row">
 
-				<div class="col-sm-9 padding-right">
-					<div class="product-details"><!--product-details-->
-						<div class="col-sm-5">
-							<div class="view-product">
-								<img src="images/product-details/1.jpg" alt="" />
-								<h3>ZOOM</h3>
-							</div>
-							<div id="similar-product" class="carousel slide" data-ride="carousel">
-
-								  <!-- Wrapper for slides -->
-								    <div class="carousel-inner">
-										<div class="item active">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										<div class="item">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										</div>
-										<div class="item">
-										  <a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-										  <a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-										</div>
-
-									</div>
-
-								  <!-- Controls -->
-								  <a class="left item-control" href="#similar-product" data-slide="prev">
-									<i class="fa fa-angle-left"></i>
-								  </a>
-								  <a class="right item-control" href="#similar-product" data-slide="next">
-									<i class="fa fa-angle-right"></i>
-								  </a>
-							</div>
-
+			<div class="col-sm-9 padding-right">
+				<div class="product-details">
+					<!--product-details-->
+					<div class="col-sm-5">
+						<div class="view-product">
+							<img src="images/product-details/1.jpg" alt="" />
+							<h3>ZOOM</h3>
 						</div>
-						<div class="col-sm-7">
-							<div class="product-information" ng-controller="productDetailsController"><!--/product-information-->
-									 	<h2>{{product.name}}</h2>
-								<img src="images/product-details/new.jpg"  class="newarrival" alt="" />
+						<div id="similar-product" class="carousel slide" data-ride="carousel">
 
+							<!-- Wrapper for slides -->
+							<div class="carousel-inner">
+								<div class="item active">
+									<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
+									<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
+									<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+								</div>
+								<div class="item">
+									<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
+									<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
+									<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+								</div>
+								<div class="item">
+									<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
+									<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
+									<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
+								</div>
 
+							</div>
 
-								<span ng-controller="containerController">
+							<!-- Controls -->
+							<a class="left item-control" href="#similar-product" data-slide="prev">
+								<i class="fa fa-angle-left"></i>
+							</a>
+							<a class="right item-control" href="#similar-product" data-slide="next">
+								<i class="fa fa-angle-right"></i>
+							</a>
+						</div>
+
+					</div>
+					<div class="col-sm-7">
+						<div class="product-information" ng-controller="productDetailsController">
+							<!--/product-information-->
+							<h2>{{product.name}}</h2>
+							<img src="images/product-details/new.jpg" class="newarrival" alt="" />
+							<span>
 									<span>&#8377; {{product.rate}}</span>
-									<label>Quantity:</label>
-									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart" ng-click="addToCart(product)">
+							<label>Quantity:</label>
+							<input type="text" value="3" ng-model="quantity" />
+							<button type="button" class="btn btn-fefault cart" ng-click="addToCart(product)">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
-								</span>
-								<p><b>Availability:</b> In Stock</p>
-								<p><b>Condition:</b> {{product.condition}}</p>
-								<p><b>Brand:</b>{{product.brandname}}</p>
+							</span>
+							<p><b>Availability:</b> In Stock</p>
+							<p><b>Condition:</b> {{product.condition}}</p>
+							<p><b>Brand:</b>{{product.brandname}}</p>
 
-							</div><!--/product-information-->
 						</div>
-					</div><!--/product-details-->
-
-
-					</div><!--/recommended_items-->
-
+						<!--/product-information-->
+					</div>
 				</div>
+				<!--/product-details-->
+
+
 			</div>
+			<!--/recommended_items-->
+
 		</div>
-	</section>
+	</div>
+	</div>
+</section>

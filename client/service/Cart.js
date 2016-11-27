@@ -5,11 +5,11 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config','$cooki
     this.cart = $cookieStore.get('cart') || [];
     this.serviceTax = 20.5;
 
-    this.addProduct = function(product) {
+    this.addProduct = function(product, quantity) {
         this.cart.push({
             'id': this.count++,
             'product': product,
-            'quantity': 1,
+            'quantity': quantity || 1,
             'total': product.rate
         });
         $cookieStore.put('cart', this.cart);
