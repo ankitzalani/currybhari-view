@@ -46,13 +46,13 @@
 									 	<h2>{{product.name}}</h2>
 								<img src="images/product-details/new.jpg"  class="newarrival" alt="" />
 
-								<p>Web ID: {{product.name}}</p>
-								<img src="images/product-details/rating.png" alt="" />
-								<span>
+
+
+								<span ng-controller="containerController">
 									<span>&#8377; {{product.rate}}</span>
 									<label>Quantity:</label>
 									<input type="text" value="3" />
-									<button type="button" class="btn btn-fefault cart">
+									<button type="button" class="btn btn-fefault cart" ng-click="addToCart(product)">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
@@ -60,7 +60,7 @@
 								<p><b>Availability:</b> In Stock</p>
 								<p><b>Condition:</b> {{product.condition}}</p>
 								<p><b>Brand:</b>{{product.brandname}}</p>
-								<a href=""><img src="images/product-details/share.png" class="share img-responsive"  alt="" /></a>
+
 							</div><!--/product-information-->
 						</div>
 					</div><!--/product-details-->
