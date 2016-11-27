@@ -9,26 +9,32 @@
         <!--/breadcrums-->
 
         <div id="accordion">
-            <h3 class="accordianHeader">Login Information</h3>
+            <h3 class="accordianHeader">Login Information {{user.displayName}}</h3>
             <div>
-                <div class="checkout-options">
-                    <ul class="nav">
-                        <li>
-                            <label><button class="btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
-                            </label>
-                        </li>
-                        <li>
-                            <label><button class="btn-google" ng-click="authenticate('google')">Sign in with Google</button></label>
-                        </li>
-                    </ul>
-                </div>
-                <!--/checkout-options-->
+                <div ng-if="!user.displayName">
+                    <div class="checkout-options">
+                    </br>
+                    </br>
+                        <ul class="nav">
+                            <li>
+                                <label><button class="btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
+                                </label>
+                            </li>
+                            <li>
+                                <label><button class="btn-google" ng-click="authenticate('google')">Sign in with Google</button></label>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--/checkout-options-->
 
-                <div class="register-req">
-                    <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
+                    <div class="register-req">
+                        <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
+                    </div>
+                    <!--/register-req-->
                 </div>
-                <!--/register-req-->
-
+                <div ng-if="user.displayName">
+                    Welcome {{user.displayName}}
+                </div>
             </div>
             <h3 class="accordianHeader">Address Information</h3>
             <div>

@@ -2,6 +2,7 @@
 
 var User = require("../modals/User");
 var Product = require("../modals/Product");
+var Slider = require("../modals/Slider");
 
 User.find(function(err, data) {
     if (!data || !data.length) {
@@ -20,6 +21,29 @@ User.find(function(err, data) {
             console.log('Populating Users');
         });
     }
+});
+
+Slider.find(function(err, data) {
+  if (!data || !data.length) {
+    Slider.create({
+        name: 'Special Offer',
+        description: '50% Off on all products before 2017',
+        image: './images/home/girl3.jpg',
+        redirectURL: ''
+    },{
+        name: 'Samosa Offer',
+        description: '10% Off on Samosa',
+        image: './images/home/girl2.jpg',
+        redirectURL: ''
+    },{
+        name: 'Paytm Offer',
+        description: '20% cashback on paytm',
+        image: './images/home/girl3.jpg',
+        redirectURL: ''
+    });
+  }
+}, function() {
+    console.log('Populating Slider');
 });
 
 Product.find(function(err, data) {

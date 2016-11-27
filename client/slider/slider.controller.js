@@ -1,15 +1,15 @@
 angular.module('curryBhariApp')
-  .controller("productSliderController", ['$scope', '$http', '$q','Products', function(
+  .controller("sliderController", ['$scope', '$http', '$q','SliderService', function(
   $scope,
-  $http, $q, Products) {
+  $http, $q, SliderService) {
 
-  $scope.products = [];
+  $scope.sliders = [];
 
-  var getProducts = function() {
-      Products.list().then(function(promise){
-          $scope.products = promise.data;
+  var getSliders = function() {
+      SliderService.list().then(function(promise){
+          $scope.sliders = promise.data;
       });
   };
 
-  getProducts();
+  getSliders();
 }]);
