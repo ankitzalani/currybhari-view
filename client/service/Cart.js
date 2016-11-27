@@ -24,6 +24,7 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config','$cooki
 
     this.changeQuantity = function(id, quantity) {
         if(quantity <= 0) return;
+        quantity = parseInt(quantity);
         for (var i = 0; i < this.cart.length; i++) {
             if (this.cart[i].id == id) {
                 this.cart[i].quantity = quantity;

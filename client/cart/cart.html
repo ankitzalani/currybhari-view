@@ -1,5 +1,14 @@
 <div class="panel"  ng-controller="cartController">
     <div>
+      <script type="text/javascript">
+       var specialKeys = new Array();
+       specialKeys.push(8); //Backspace
+       function IsNumeric(e) {
+           var keyCode = e.which ? e.which : e.keyCode
+           var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+           return ret;
+       }
+   </script>
         <section id="cart_items">
             <div class="container">
                 <div class="breadcrumbs">
@@ -35,12 +44,12 @@
                                         <h4><a href="">{{obj.product.name}}</a></h4>
                                     </td>
                                     <td class="cart_price">
-                                        <p>{{obj.product.rate}}</p>
+                                        <p>{{obj.product.rate}} </p>
                                     </td>
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
                                             <a class="cart_quantity_up" href="" ng-click="changeQuantity(obj.id, (obj.quantity + 1))"> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" ng-model="obj.quantity" ng-change="changeQuantity(obj.id, obj.quantity)" autocomplete="off" size="2">
+                                            <input class="cart_quantity_input" type="text" name="quantity" ng-model="obj.quantity" ng-change="changeQuantity(obj.id, obj.quantity)" autocomplete="off" size="2" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" >
                                             <a class="cart_quantity_down" href="" ng-click="changeQuantity(obj.id, (obj.quantity - 1))"> - </a>
                                         </div>
                                     </td>

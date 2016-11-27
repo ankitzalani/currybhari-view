@@ -10,7 +10,6 @@ var corsOptions = {
 var debug = false;
 
 module.exports = function(app) {
-
     app.get('/products', cors(corsOptions), function(req, res) {
         if (debug === false) {
             product.find().exec(function(error, products) {
