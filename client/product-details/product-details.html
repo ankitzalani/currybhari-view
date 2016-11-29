@@ -47,8 +47,9 @@
 					<div class="col-sm-7">
 						<div class="product-information" ng-controller="productDetailsController">
 							<!--/product-information-->
-							<h2>{{product.name}}</h2> {{product.description}}
-							<img src="images/product-details/new.jpg" class="newarrival" alt="" />
+							<h1 style="color:green">{{product.name}}</h1>
+							 <h4> {{product.description}}</h4>
+
 							<span>
 									<span>&#8377; {{product.rate}}</span>
 							<label>Quantity:</label>
@@ -58,9 +59,16 @@
 										Add to cart
 									</button>
 							</span>
-							<p><b>Availability:</b> In Stock</p>
-							<p ng-if="product.condition"><b>Condition:</b> {{product.condition}}</p>
+							<p><b>Availability:</b>{{product.Stock}}</p>
+							<p><b>Features:</b>
+							<p ng-if="product.condition"><b>Condition:</b> {{product.features}}</p>
+							</p>
+							<p><b>Brands:</b>
 							<p ng-if="product.brandName"><b>Brand:</b>{{product.brandName}}</p>
+						</p>
+						<p><b>Offers:</b>
+						<p ng-if="product.brandName"><b>Brand:</b>{{product.offers}}</p>
+					</p>
 						</div>
 						<!--/product-information-->
 					</div>
