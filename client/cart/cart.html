@@ -1,14 +1,14 @@
-<div class="panel"  ng-controller="cartController">
+<div class="panel" ng-controller="cartController">
     <div>
-      <script type="text/javascript">
-       var specialKeys = new Array();
-       specialKeys.push(8); //Backspace
-       function IsNumeric(e) {
-           var keyCode = e.which ? e.which : e.keyCode
-           var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
-           return ret;
-       }
-   </script>
+        <script type="text/javascript">
+            var specialKeys = new Array();
+            specialKeys.push(8); //Backspace
+            function IsNumeric(e) {
+                var keyCode = e.which ? e.which : e.keyCode
+                var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+                return ret;
+            }
+        </script>
         <section id="cart_items">
             <div class="container">
                 <div class="breadcrumbs">
@@ -49,7 +49,7 @@
                                     <td class="cart_quantity">
                                         <div class="cart_quantity_button">
                                             <a class="cart_quantity_up" href="" ng-click="changeQuantity(obj.id, (obj.quantity + 1))"> + </a>
-                                            <input class="cart_quantity_input" type="text" name="quantity" ng-model="obj.quantity" ng-change="changeQuantity(obj.id, obj.quantity)" autocomplete="off" size="2" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" >
+                                            <input class="cart_quantity_input" type="text" name="quantity" ng-model="obj.quantity" ng-change="changeQuantity(obj.id, obj.quantity)" autocomplete="off" size="2" onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;">
                                             <a class="cart_quantity_down" href="" ng-click="changeQuantity(obj.id, (obj.quantity - 1))"> - </a>
                                         </div>
                                     </td>
@@ -68,34 +68,30 @@
             </div>
         </section>
         <!--/#cart_items-->
-<div ng-if="cart && cart.length">
-        <section id="do_action">
-            <div class="container">
-                <div class="heading">
-                    <h3>What would you like to do next?</h3>
-                    <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-                </div>
-                <div class="row">
-                    <div class="col-sm-6">
-                        <div class="chose_area">
-                            <ul class="user_option">
-                                <li>
-                                    <input type="checkbox">
-                                    <label>Use Coupon Code</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <label>Use Gift Voucher</label>
-                                </li>
-                                <li>
-                                    <input type="checkbox">
-                                    <label>Estimate Shipping & Taxes</label>
-                                </li>
-                            </ul>
-                            <ul class="user_info">
-                                <li class="single_field">
-                                    <label>Country:</label>
-                                    <select>
+        <div ng-if="cart && cart.length">
+            <section id="do_action">
+                <div class="container">
+                    <div class="row">
+                        <!-- <div class="col-sm-6">
+                            <div class="chose_area">
+                                <ul class="user_option">
+                                    <li>
+                                        <input type="checkbox">
+                                        <label>Use Coupon Code</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <label>Use Gift Voucher</label>
+                                    </li>
+                                    <li>
+                                        <input type="checkbox">
+                                        <label>Estimate Shipping & Taxes</label>
+                                    </li>
+                                </ul>
+                                <ul class="user_info">
+                                    <li class="single_field">
+                                        <label>Country:</label>
+                                        <select>
                     									<option>United States</option>
                     									<option>Bangladesh</option>
                     									<option>UK</option>
@@ -106,10 +102,10 @@
                     									<option>Dubai</option>
                     								</select>
 
-                                </li>
-                                <li class="single_field">
-                                    <label>Region / State:</label>
-                                    <select>
+                                    </li>
+                                    <li class="single_field">
+                                        <label>Region / State:</label>
+                                        <select>
 									<option>Select</option>
 									<option>Dhaka</option>
 									<option>London</option>
@@ -120,35 +116,35 @@
 									<option>Dubai</option>
 								</select>
 
-                                </li>
-                                <li class="single_field zip-field">
-                                    <label>Zip Code:</label>
-                                    <input type="text">
-                                </li>
-                            </ul>
-                            <a class="btn btn-default update" href="">Get Quotes</a>
-                            <a class="btn btn-default check_out" href="">Continue</a>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="total_area">
-                            <ul>
-                                <li>Cart Sub Total <span>{{payment.subTotal}}</span></li>
-                                <li>Discount <span>0</span></li>
-                                <li>Credit <span>0</span></li>
-                                <li>Sub Total <span>0</span></li>
-                                <li>Delivery Charges <span>Free</span></li>
-                                <li>Tax <span>{{payment.tax}}</span></li>
-                                <li>Total Amount <span>{{payment.grandTotal}}</span></li>
-                            </ul>
-                            <a class="btn btn-default update" href="">Update</a>
-                            <a class="btn btn-default check_out" ui-sref="checkout  ">Check Out</a>
+                                    </li>
+                                    <li class="single_field zip-field">
+                                        <label>Zip Code:</label>
+                                        <input type="text">
+                                    </li>
+                                </ul>
+                                <a class="btn btn-default update" href="">Get Quotes</a>
+                                <a class="btn btn-default check_out" href="">Continue</a>
+                            </div>
+                        </div> -->
+                        <div class="col-sm-6">
+                            <div class="total_area">
+                                <ul>
+                                    <li>Cart Sub Total <span>{{payment.subTotal}}</span></li>
+                                    <li>Discount <span>0</span></li>
+                                    <li>Credit <span>0</span></li>
+                                    <li>Sub Total <span>0</span></li>
+                                    <li>Delivery Charges <span>Free</span></li>
+                                    <li>Tax <span>{{payment.tax}}</span></li>
+                                    <li>Total Amount <span>{{payment.grandTotal}}</span></li>
+                                </ul>
+                                <a class="btn btn-default update" href="">Update</a>
+                                <a class="btn btn-default check_out" ui-sref="checkout  ">Check Out</a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </section>
-      </div>
+            </section>
+        </div>
         <!--/#do_action-->
     </div>
 </div>
