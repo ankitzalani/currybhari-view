@@ -52,7 +52,7 @@ Product.find(function(err, data) {
             "name": "namkeen",
             "description": "testing",
             "rate": 100,
-            "image": "./images/home/1.jpg",
+            "image": "./images/food/HoneyChilliPotato.jpeg",
             "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
         }, {
             "name": "sev",
