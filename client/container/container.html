@@ -10,11 +10,12 @@
                 <div class="single-products">
                     <div class="productinfo text-center">
                         <a ui-sref="productDetails({id: product._id})">
-                            <img ng-src="{{product.image}}" alt="">
+                            <img class="productinfoImg" ng-src="{{product.image}}" alt="">
                         </a>
                         <h2>&#8377; {{product.rate}}</h2>
                         <p>{{product.name}}</p>
-                        <a href="#" class="btn btn-default add-to-cart" ng-click="addToCart(product)">Add tocart</a>
+                        <a class="btn btn-default add-to-cart" ng-click="addToCart(product)">Add tocart</a>
+                        &nbsp;<a class="btn btn-default add-to-cart" ui-sref="cart">Go to Cart</a>
                     </div>
                     <!-- <div class="product-overlay">
                           <div class="overlay-content">
