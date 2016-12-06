@@ -43,7 +43,7 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
     $stateProvider
         .state('productDetails', {
             title: 'Product Details',
-            url: '/productDetails',
+            url: '/product/:id',
             templateUrl: '/product-details/product-details.html',
             controller: 'productDetailsController',
             params : { id: null, }
