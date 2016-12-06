@@ -53,13 +53,13 @@ Product.find(function(err, data) {
             "description": "Yummy Potato with Honey and Chilli",
             "rate": 100,
             "image": "./images/food/HoneyChilliPotato.jpeg",
-            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
+            "otherImages": []
         }, {
             "name": "Katori Chat",
             "description": "Chat with katori. Ohh yes you can eat both.",
             "rate": 60,
             "image": "./images/food/KatoriChat.jpeg",
-            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
+            "otherImages": []
         }, {
             "name": "Gulab Jamun",
             "description": "Gujrat",

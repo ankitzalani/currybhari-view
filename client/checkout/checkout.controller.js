@@ -8,4 +8,8 @@ angular.module('curryBhariApp')
             UserService.authenticate(provider);
             $scope.user = UserService.user;
         };
+
+        $scope.confirmOrder = function() {
+
+        }
     }]);

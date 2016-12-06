@@ -1,7 +1,6 @@
 <section ng-controller="productDetailsController">
 	<div class="container">
 		<div class="row">
-
 			<div class="col-sm-9 padding-right">
 				<div class="product-details">
 					<!--product-details-->
@@ -18,21 +17,6 @@
 										<img ng-src="{{img}}" alt="" width="90px">
 									</a>
 								</div>
-								<!-- <div class="item active">
-									<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-									<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-									<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-								</div>
-								<div class="item">
-									<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-									<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-									<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-								</div>
-								<div class="item">
-									<a href=""><img src="images/product-details/similar1.jpg" alt=""></a>
-									<a href=""><img src="images/product-details/similar2.jpg" alt=""></a>
-									<a href=""><img src="images/product-details/similar3.jpg" alt=""></a>
-								</div> -->
 							</div>
 							<!-- Controls -->
 							<a class="left item-control" href="#similar-product" data-slide="prev">
@@ -52,11 +36,17 @@
 							<span>
 									<span>&#8377; {{product.rate}}</span>
 							<label>Quantity:</label>
-							<input type="text" value="3" ng-model="quantity"/>
+							<input type="text" value="3" ng-model="quantity" />
+						</br>
+						<span>
 							<button type="button" class="btn btn-fefault cart" ng-click="addToCart(product)">
 										<i class="fa fa-shopping-cart"></i>
 										Add to cart
 									</button>
+							<button type="button" class="btn btn-fefault cart" ui-sref="cart">
+												<i class="fa fa-shopping-cart"></i>
+												Go to Cart
+											</button>
 							</span>
 							<p><b>Availability:</b> In Stock</p>
 							<p ng-if="product.condition"><b>Condition:</b> {{product.condition}}</p>
