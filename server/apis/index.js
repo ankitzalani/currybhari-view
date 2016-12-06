@@ -38,9 +38,9 @@ module.exports = function(app) {
                     return res.status(500).send(error);
                 }
 
-                products.forEach(function(product) {
-                    product.rate = convertToMoney(product.rate);
-                });
+                // products.forEach(function(product) {
+                //     product.rate = convertToMoney(product.rate);
+                // });
 
                 return res.status(200).json(products);
             });
@@ -58,7 +58,7 @@ module.exports = function(app) {
                 if (error) {
                     return res.status(500).send(error);
                 }
-                product.rate = convertToMoney(product.rate);
+                //product.rate = convertToMoney(product.rate);
 
                 return res.status(200).json(product);
             });
