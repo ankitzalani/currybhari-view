@@ -15,6 +15,8 @@ var convertToMoney = function(num) {
 }
 
 module.exports = function(app) {
+    require('./userDao')(app);
+
     app.get('/slider', cors(corsOptions), function(req, res) {
         if (debug === false) {
             slider.find().exec(function(error, slidersList) {

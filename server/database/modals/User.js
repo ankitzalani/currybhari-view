@@ -3,6 +3,14 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
+var addressSchema = new Schema({
+    address: String,
+    city: String,
+    postCode: String,
+    country: String,
+    region: String
+});
+
 var UserSchema = new Schema({
     name: String,
     email: String,
@@ -11,10 +19,8 @@ var UserSchema = new Schema({
         default: 'user'
     },
     hashedPassword: String,
-    provider: String,
     salt: String,
-    facebook: {},
-    google: {}
+    addresses: [addressSchema]
 });
 
 module.exports = mongoose.model('User', UserSchema);
