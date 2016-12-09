@@ -19,12 +19,12 @@ angular.module('curryBhariApp').service('UserService', ['$http', '$q', '$auth', 
 
         this.login = function(username, password) {
             var self = this;
-            var data = {
-                'user' : username,
+            var usrObject = {
+                'user': username,
                 'password': password
             };
 
-            var promise = $http.post(appconfig.host + '/user', data).success(
+            var promise = $http.get(appconfig.host + '/user', usrObject).success(
                 function(data) {
                     self.user = data;
                     $cookieStore.put('user', self.user);
@@ -32,6 +32,16 @@ angular.module('curryBhariApp').service('UserService', ['$http', '$q', '$auth', 
                 });
             return promise;
         };
+
+        this.register = function(usrObject) {
+            var promise = $http.post(appconfig.host + '/user', usrObject).success(
+                function(data) {
+                    self.user = data;
+                    $cookieStore.put('user', self.user);
+                    return data;
+                });
+            return promise;
+        }
 
         this.logout = function() {
             $cookieStore.remove('user');
