@@ -37,7 +37,11 @@ angular.module('curryBhariApp')
                 $scope.user.email.trim().length > 0 &&
                 $scope.user.email.trim().length > 0) {
                 UserService.register($scope.user).then(function(promise) {
-                    $state.go("checkout");
+                    if (promise.data.error && promise.data.error.length) {
+                        $scope.error = promise.data.error;
+                    } else {
+                        $state.go("checkout");
+                    }
                 });
             } else {
                 $scope.error = "Please enter all values to login.";
