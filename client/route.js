@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification', 'satellizer', 'ngCookies']);
+var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification', 'satellizer', 'ngCookies', 'angular-md5']);
 app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $authProvider) {
     $authProvider.facebook({
         clientId: '1028093290647214'
@@ -43,9 +43,27 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
     $stateProvider
         .state('productDetails', {
             title: 'Product Details',
-            url: '/productDetails',
+            url: '/product/:id',
             templateUrl: '/product-details/product-details.html',
             controller: 'productDetailsController',
-            params : { id: null, }
+            params: {
+                id: null,
+            }
         });
+
+    $stateProvider
+        .state('login', {
+            title: 'Login',
+            url: '/login',
+            templateUrl: '/login/login.html',
+            controller: 'loginController',
+        });
+
+        $stateProvider
+            .state('payment', {
+                title: 'Payment',
+                url: '/payment',
+                templateUrl: '/payment/payment.html',
+                controller: 'paymentController',
+            });
 });

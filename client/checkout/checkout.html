@@ -1,101 +1,42 @@
 <section id="cart_items" ng-controller="checkoutController">
-    <div class="container">
-        <div class="breadcrumbs">
-            <ol class="breadcrumb">
-                <li><a href="#">Home</a></li>
-                <li class="active">Check out</li>
-            </ol>
-        </div>
-        <!--/breadcrums-->
+    <div class="container m-t-3">
+        <div class="row">
 
-        <div id="accordion">
-            <h3 class="accordianHeader">Login Information {{user.displayName}}</h3>
-            <div>
-                <div ng-if="!user.displayName">
-                    <div class="checkout-options">
-                    </br>
-                    </br>
-                        <ul class="nav">
-                            <li>
-                                <label><button class="btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
-                                </label>
-                            </li>
-                            <li>
-                                <label><button class="btn-google" ng-click="authenticate('google')">Sign in with Google</button></label>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--/checkout-options-->
-
-                    <div class="register-req">
-                        <p>Please use Register And Checkout to easily get access to your order history, or use Checkout as Guest</p>
-                    </div>
-                    <!--/register-req-->
-                </div>
-                <div ng-if="user.displayName">
-                    Welcome {{user.displayName}}
-                </div>
-            </div>
-            <h3 class="accordianHeader">Address Information</h3>
-            <div>
-                <div class="shopper-informations">
+            <!-- Checkout Form -->
+            <div class="col-md-9">
+                <div class="title"><span>Enter shipping address</span></div>
+                </br>
+                <form>
                     <div class="row">
-                        <div class="col-sm-6 clearfix">
-                            <div class="bill-to">
-                                <p>Bill To</p>
-                                <div class="form-one">
-                                    <form>
-                                        <input type="text" placeholder="First Name *">
-                                        <input type="text" placeholder="Middle Name">
-                                        <input type="text" placeholder="Last Name *">
-                                        <input type="text" placeholder="Phone *">
-                                        <input type="text" placeholder="Mobile Phone">
-                                    </form>
-                                </div>
-                                <div class="form-two">
-                                    <form>
-                                      <input type="text" placeholder="Address 1 *">
-                                      <input type="text" placeholder="Address 2">
-                                      <input type="text" placeholder="Zip / Postal Code *">
-                                      <select>
-                                            <option>-- Country --</option>
-                                            <option>India</option>
-                                       </select>
-                                       <select>
-                                            <option>-- State / Province / Region --</option>
-                                            <option>India</option>
-                                      </select>
-                                    </form>
-                                </div>
-                            </div>
+                        <div class="form-group col-sm-12">
+                            <label for="addressInput">Address (*)</label>
+                            <textarea class="form-control" rows="3" id="addressInput"></textarea>
                         </div>
-
+                        <div class="form-group col-sm-6">
+                            <label for="cityInput">City (*)</label>
+                            <input type="text" class="form-control" id="cityInput" placeholder="City">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="postInput">Post Code (*)</label>
+                            <input type="text" class="form-control" id="postInput" placeholder="Post Code">
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="countryInput">Country (*)</label>
+                            <input type="text" class="form-control" id="country" placeholder="Country" />
+                        </div>
+                        <div class="form-group col-sm-6">
+                            <label for="regionInput">Region / State (*)</label>
+                            <input type="text" class="form-control" id="region" placeholder="Region / State (*)" />
+                        </div>
                     </div>
-                </div>
+                    <nav aria-label="Checkout Next Navigation">
+                        <ul class="pager">
+                            <li class="previous"><a ui-sref="cart"><span aria-hidden="true">←</span> Back to Cart</a></li>
+                            <li class="next"><a ng-click="confirmOrder()">Confirm Order <span aria-hidden="true">→</span></a></li>
+                        </ul>
+                    </nav>
+                </form>
             </div>
-            <h3 class="accordianHeader">Section 3</h3>
-            <div>
-                </br>
-                </br>
-                <div class="shopper-informations">
-                    <div class="payment-options">
-                        <span>
-                      <label><input type="checkbox"> Direct Bank Transfer</label>
-                    </span>
-                        <span>
-                      <label><input type="checkbox"> Check Payment</label>
-                    </span>
-                        <span>
-                      <label><input type="checkbox"> Paypal</label>
-                    </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <script>
-            $(function() {
-                $("#accordion").accordion();
-            });
-        </script>
+            <!-- End Checkout Form -->
 </section>
+  

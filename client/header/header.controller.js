@@ -16,6 +16,10 @@ angular.module('curryBhariApp')
             UserService.authenticate(provider);
         }
 
+        $scope.closePopup = function() {
+            $("#loginDialogue").dialog('close');
+        }
+
         $scope.logout = function() {
             UserService.logout();
         }

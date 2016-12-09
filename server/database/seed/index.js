@@ -49,17 +49,17 @@ Slider.find(function(err, data) {
 Product.find(function(err, data) {
     if (!data || !data.length) {
         Product.create({
-            "name": "namkeen",
-            "description": "testing",
+            "name": "Honey Chilli Potato",
+            "description": "Yummy Potato with Honey and Chilli",
             "rate": 100,
-            "image": "./images/home/1.jpg",
-            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
+            "image": "./images/food/HoneyChilliPotato.jpeg",
+            "otherImages": []
         }, {
-            "name": "sev",
-            "description": "namkeen",
-            "rate": 200,
-            "image": "./images/home/1.jpg",
-            "otherImages": ["./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg", "./images/home/1.jpg"]
+            "name": "Katori Chat",
+            "description": "Chat with katori. Ohh yes you can eat both.",
+            "rate": 60,
+            "image": "./images/food/KatoriChat.jpeg",
+            "otherImages": []
         }, {
             "name": "Gulab Jamun",
             "description": "Gujrat",

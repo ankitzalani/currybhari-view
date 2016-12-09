@@ -15,6 +15,8 @@ var convertToMoney = function(num) {
 }
 
 module.exports = function(app) {
+    require('./userDao')(app);
+
     app.get('/slider', cors(corsOptions), function(req, res) {
         if (debug === false) {
             slider.find().exec(function(error, slidersList) {
@@ -38,9 +40,9 @@ module.exports = function(app) {
                     return res.status(500).send(error);
                 }
 
-                products.forEach(function(product) {
-                    product.rate = convertToMoney(product.rate);
-                });
+                // products.forEach(function(product) {
+                //     product.rate = convertToMoney(product.rate);
+                // });
 
                 return res.status(200).json(products);
             });
@@ -58,7 +60,7 @@ module.exports = function(app) {
                 if (error) {
                     return res.status(500).send(error);
                 }
-                product.rate = convertToMoney(product.rate);
+                //product.rate = convertToMoney(product.rate);
 
                 return res.status(200).json(product);
             });
