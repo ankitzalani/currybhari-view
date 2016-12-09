@@ -37,6 +37,7 @@ angular.module('curryBhariApp').service('UserService', ['$http', '$q', '$auth', 
         };
 
         this.register = function(usrObject) {
+            var self = this;
             var promise = $http.post(appconfig.host + '/user', usrObject).success(
                 function(data) {
                     self.user = data;

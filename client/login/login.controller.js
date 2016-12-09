@@ -17,8 +17,8 @@ angular.module('curryBhariApp')
         }
 
         $scope.login = function() {
-          if ($scope.login.username.trim().length > 0 &&
-              $scope.login.password.trim().length > 0) {
+            if ($scope.login.username.trim().length > 0 &&
+                $scope.login.password.trim().length > 0) {
                 UserService.login($scope.login).then(function(promise) {
                     if (promise.data.error && promise.data.error.length) {
                         $scope.error = promise.data.error;
@@ -26,9 +26,9 @@ angular.module('curryBhariApp')
                         $state.go('checkout');
                     }
                 });
-          } else {
-              $scope.error = "Invalid credentials";
-          }
+            } else {
+                $scope.error = "Invalid credentials";
+            }
         }
 
         $scope.register = function() {
@@ -42,6 +42,5 @@ angular.module('curryBhariApp')
             } else {
                 $scope.error = "Please enter all values to login.";
             }
-
         }
     }]);
