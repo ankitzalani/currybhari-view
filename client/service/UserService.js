@@ -17,17 +17,20 @@ angular.module('curryBhariApp').service('UserService', ['$http', '$q', '$auth', 
             });
         };
 
-        this.login = function(username, password) {
+        this.login = function(login) {
             var self = this;
             var usrObject = {
-                'user': username,
-                'password': password
+                'user': login.username,
+                'password': login.password
             };
 
-            var promise = $http.get(appconfig.host + '/user', usrObject).success(
+            var promise = $http.get(appconfig.host + '/user?username=' + login.username +
+                '&password=' + login.password).success(
                 function(data) {
-                    self.user = data;
-                    $cookieStore.put('user', self.user);
+                    if (!data.error || !data.error.length) {
+                        self.user = data;
+                        $cookieStore.put('user', self.user);
+                    }
                     return data;
                 });
             return promise;

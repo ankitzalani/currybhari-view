@@ -11,10 +11,24 @@ angular.module('curryBhariApp')
             mobile: ""
         };
 
+        $scope.login = {
+            username: "",
+            password: ""
+        }
+
         $scope.login = function() {
-            UserService.login().then(function(promise) {
-                $state.go('checkout');
-            });
+          if ($scope.login.username.trim().length > 0 &&
+              $scope.login.password.trim().length > 0) {
+                UserService.login($scope.login).then(function(promise) {
+                    if (promise.data.error && promise.data.error.length) {
+                        $scope.error = promise.data.error;
+                    } else {
+                        $state.go('checkout');
+                    }
+                });
+          } else {
+              $scope.error = "Invalid credentials";
+          }
         }
 
         $scope.register = function() {
