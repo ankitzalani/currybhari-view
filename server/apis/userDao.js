@@ -35,10 +35,8 @@ module.exports = function(app) {
                 });
 
                 user.save(function(error, userObj) {
-                    if (error) {
-                        utils.throwError(res, message.SOMETHING_WENT_WRONG);
-                    }
-                    utils.throwSuccess(res, createUserObjResponse(userObj));
+                    if (error) return utils.throwError(res, message.SOMETHING_WENT_WRONG);
+                    return utils.throwSuccess(res, createUserObjResponse(userObj));
                 });
             }
         });
@@ -49,12 +47,11 @@ module.exports = function(app) {
             'name': request.query.username
         }, function(error, userObj) {
             if (error) {
-                utils.throwError(response, message.SOMETHING_WENT_WRONG);
-            }
-            if (userObj && request.query.password === userObj.hashedPassword) {
-                utils.throwSuccess(response, createUserObjResponse(userObj));
+                return utils.throwError(response, message.SOMETHING_WENT_WRONG);
+            } else if (userObj && request.query.password === userObj.hashedPassword) {
+                return utils.throwSuccess(response, createUserObjResponse(userObj));
             } else {
-                utils.throwError(response, message.INVALID_CREDENTIALS);
+                return utils.throwError(response, message.INVALID_CREDENTIALS);
             }
         })
     });
@@ -65,11 +62,8 @@ module.exports = function(app) {
         }, function(error, user) {
             user[0].addresses.push(request.body.address);
             user[0].save(function(error) {
-                if (error) {
-                    utils.throwError(response, message.SOMETHING_WENT_WRONG);
-                } else {
-                    utils.throwSuccess(response);
-                }
+                if (error) return utils.throwError(response, message.SOMETHING_WENT_WRONG);
+                return utils.throwSuccess(response);
             });
         });
     });

@@ -1,53 +1,32 @@
 var cors = require('cors');
 var product = require('../database/modals/Product');
 var mock = require('../debug/fetch');
-
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200
-};
-
-var debug = false;
-
-var convertToMoney = function(num) {
-    return (num / 100).toFixed(2);
-}
+var utils = require('./utils');
+var loadFromFile = false;
 
 module.exports = function(app) {
-    app.get('/products', cors(corsOptions), function(req, res) {
-        if (debug === false) {
+    app.get('/products', cors(utils.corsOptions), function(req, res) {
+        if (loadFromFile === false) {
             product.find().exec(function(error, products) {
-                if (error) {
-                    return res.status(500).send(error);
-                }
-
-                // products.forEach(function(product) {
-                //     product.rate = convertToMoney(product.rate);
-                // });
-
-                return res.status(200).json(products);
+                if (error) return utils.throwError(res, message.SOMETHING_WENT_WRONG);
+                return utils.throwSuccess(res, products);
             });
         } else {
-            mock.fetchMock('products', function(data) {
-                return res.status(200).json(data);
+            mock.fetchMock('products', function(products) {
+                return utils.throwSuccess(res, products);
             });
-
         }
     });
 
-    app.get('/product/:id', cors(corsOptions), function(req, res) {
-        if (debug === false) {
+    app.get('/product/:id', cors(utils.corsOptions), function(req, res) {
+        if (loadFromFile === false) {
             product.findById(req.params.id, function(error, product) {
-                if (error) {
-                    return res.status(500).send(error);
-                }
-                //product.rate = convertToMoney(product.rate);
-
-                return res.status(200).json(product);
+                if (error) return utils.throwError(res, message.SOMETHING_WENT_WRONG);
+                return utils.throwSuccess(res, product);
             });
         } else {
-            mock.fetchMock('product', function(data) {
-                return res.status(200).json(data);
+            mock.fetchMock('product', function(product) {
+                return utils.throwSuccess(res, product);
             });
         }
     });

@@ -18,3 +18,7 @@ exports.throwSuccess = function(response, obj) {
         });
     }
 }
+
+exports.convertToMoney = function(num) {
+    return (num / 100).toFixed(2);
+}
