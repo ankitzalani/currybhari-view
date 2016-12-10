@@ -1,90 +1,74 @@
 var cors = require('cors');
 var mock = require('../debug/fetch');
 var User = require('../database/modals/User');
-
 var bodyParser = require('body-parser');
-
+var message = require('../messages');
+var utils = require('./utils');
 var debug = false;
 
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200
-};
+var createUserObjResponse = function(userObj) {
+    return {
+        _id: userObj._id,
+        username: userObj.name,
+        email: userObj.email,
+        addresses: userObj.addresses
+    }
+}
 
 module.exports = function(app) {
-    app.use(bodyParser.urlencoded());
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
 
-    app.post('/user', cors(corsOptions), function(req, res) {
+    app.post('/user', cors(utils.corsOptions), function(request, response) {
         User.findOne({
-            'name': req.body.username
-        }, function(err, u) {
-            if (u && u.name) {
-                res.json(200, {
-                    error: "You are already registered with us, please login to proceed."
-                });
+            'name': request.body.username
+        }, function(error, user) {
+            if (user && user.name) {
+                utils.throwError(response, message.ALREADY_REGISTERED);
             } else {
                 var user = new User({
-                    name: req.body.username,
-                    email: req.body.email,
-                    hashedPassword: req.body.password,
-                    salt: 'salt',
-                    addresses: [{
-                        address: req.body.address,
-                        city: req.body.city,
-                        postCode: req.body.postCode,
-                        country: req.body.country,
-                        region: req.body.region
-                    }]
+                    name: request.body.username,
+                    email: request.body.email,
+                    hashedPassword: request.body.password,
+                    salt: 'salt'
                 });
 
-                user.save(function(err, usr) {
-                    if (err) {
-                        return next(err);
+                user.save(function(error, userObj) {
+                    if (error) {
+                        utils.throwError(res, message.SOMETHING_WENT_WRONG);
                     }
-                    res.json(201, {
-                        _id: usr._id,
-                        username: usr.name
-                    });
+                    utils.throwSuccess(res, createUserObjResponse(userObj));
                 });
             }
         });
     });
 
-    app.get('/user', cors(corsOptions), function(req, res) {
+    app.get('/user', cors(utils.corsOptions), function(request, response) {
         User.findOne({
-            'name': req.query.username
-        }, function(err, u) {
-            if (err) res.json(200, {
-                error: 'Something went wrong while getting username: ' + err
-            });
-            if (u && req.query.password === u.hashedPassword) {
-                res.json(200, {
-                    _id: u._id,
-                    username: u.name
-                });
+            'name': request.query.username
+        }, function(error, userObj) {
+            if (error) {
+                utils.throwError(response, message.SOMETHING_WENT_WRONG);
+            }
+            if (userObj && request.query.password === userObj.hashedPassword) {
+                utils.throwSuccess(response, createUserObjResponse(userObj));
             } else {
-                res.json(200, {
-                    error: 'Invalid Credentials'
-                });
+                utils.throwError(response, message.INVALID_CREDENTIALS);
             }
         })
     });
 
-    app.put('/address', cors(corsOptions), function(req, res) {
+    app.put('/address', cors(utils.corsOptions), function(request, response) {
         User.find({
-            _id: req.body.user._id
-        }, function(err, user) {
-            user[0].addresses.push(req.body.address);
-
-            user[0].save(function(err) {
-                if (err) {
-                    res.json(200, {
-                        error: 'Something went wrong ' + err
-                    });
+            _id: request.body.user._id
+        }, function(error, user) {
+            user[0].addresses.push(request.body.address);
+            user[0].save(function(error) {
+                if (error) {
+                    utils.throwError(response, message.SOMETHING_WENT_WRONG);
                 } else {
-                    res.json(200, {
-                        success: true
-                    });
+                    utils.throwSuccess(response);
                 }
             });
         });
