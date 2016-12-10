@@ -3,7 +3,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-var addressSchema = new Schema({
+var AddressSchema = new Schema({
     address: String,
     city: String,
     postCode: String,
@@ -20,7 +20,7 @@ var UserSchema = new Schema({
     },
     hashedPassword: String,
     salt: String,
-    addresses: [addressSchema]
+    addresses: [AddressSchema]
 });
 
 module.exports = mongoose.model('User', UserSchema);

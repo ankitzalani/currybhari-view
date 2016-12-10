@@ -41,7 +41,10 @@ module.exports = function(app) {
                     if (err) {
                         return next(err);
                     }
-                    res.json(201, req.body);
+                    res.json(201, {
+                        _id: usr._id,
+                        username: usr.name
+                    });
                 });
             }
         });
@@ -56,6 +59,7 @@ module.exports = function(app) {
             });
             if (u && req.query.password === u.hashedPassword) {
                 res.json(200, {
+                    _id: u._id,
                     username: u.name
                 });
             } else {
@@ -64,5 +68,25 @@ module.exports = function(app) {
                 });
             }
         })
+    });
+
+    app.put('/address', cors(corsOptions), function(req, res) {
+        User.find({
+            _id: req.body.user._id
+        }, function(err, user) {
+            user[0].addresses.push(req.body.address);
+
+            user[0].save(function(err) {
+                if (err) {
+                    res.json(200, {
+                        error: 'Something went wrong ' + err
+                    });
+                } else {
+                    res.json(200, {
+                        success: true
+                    });
+                }
+            });
+        });
     });
 }

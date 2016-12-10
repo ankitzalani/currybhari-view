@@ -1,4 +1,7 @@
 <section id="cart_items" ng-controller="checkoutController">
+    <div class="alert alert-danger" ng-if="error">
+        <strong>Danger!</strong> {{error}}
+    </div>
     <div class="container m-t-3">
         <div class="row">
 
@@ -10,23 +13,23 @@
                     <div class="row">
                         <div class="form-group col-sm-12">
                             <label for="addressInput">Address (*)</label>
-                            <textarea class="form-control" rows="3" id="addressInput"></textarea>
+                            <textarea class="form-control" rows="3" id="addressInput" ng-model="address.address"></textarea>
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="cityInput">City (*)</label>
-                            <input type="text" class="form-control" id="cityInput" placeholder="City">
+                            <input type="text" class="form-control" id="cityInput" placeholder="City" ng-model="address.city">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="postInput">Post Code (*)</label>
-                            <input type="text" class="form-control" id="postInput" placeholder="Post Code">
+                            <input type="text" class="form-control" id="postInput" placeholder="Post Code" ng-model="address.postCode">
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="countryInput">Country (*)</label>
-                            <input type="text" class="form-control" id="country" placeholder="Country" />
+                            <input type="text" class="form-control" id="country" placeholder="Country" ng-model="address.country"/>
                         </div>
                         <div class="form-group col-sm-6">
                             <label for="regionInput">Region / State (*)</label>
-                            <input type="text" class="form-control" id="region" placeholder="Region / State (*)" />
+                            <input type="text" class="form-control" id="region" placeholder="Region / State (*)" ng-model="address.region"/>
                         </div>
                     </div>
                     <nav aria-label="Checkout Next Navigation">
@@ -39,4 +42,3 @@
             </div>
             <!-- End Checkout Form -->
 </section>
-  
