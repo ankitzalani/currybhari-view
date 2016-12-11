@@ -1,6 +1,6 @@
 angular.module('curryBhariApp')
-    .controller("loginController", ['$scope', '$http', '$q', 'UserService', '$state', function(
-        $scope,
+    .controller("loginController", ['$scope', '$rootScope', '$http', '$q', 'UserService', '$state', function(
+        $scope, $rootScope,
         $http, $q, UserService, $state) {
 
         $scope.error = "";
@@ -23,7 +23,7 @@ angular.module('curryBhariApp')
                     if (promise.data.error && promise.data.error.length) {
                         $scope.error = promise.data.error;
                     } else {
-                        $state.go('checkout');
+                        $scope.stateTransition();
                     }
                 });
             } else {
@@ -31,16 +31,27 @@ angular.module('curryBhariApp')
             }
         }
 
+        $scope.stateTransition = function() {
+            if ($rootScope.previousState.name === 'cart') {
+                $state.go('checkout');
+            } else if ($rootScope.previousState.name === '') {
+                $state.go('container');
+            } else {
+                $state.go($rootScope.previousState.name);
+            }
+        }
+
         $scope.register = function() {
             if ($scope.user.username.trim().length > 0 &&
                 $scope.user.password.trim().length > 0 &&
                 $scope.user.email.trim().length > 0 &&
-                $scope.user.email.trim().length > 0) {
+                $scope.user.mobile.trim().length > 0) {
+                  
                 UserService.register($scope.user).then(function(promise) {
                     if (promise.data.error && promise.data.error.length) {
                         $scope.error = promise.data.error;
                     } else {
-                        $state.go("checkout");
+                        $scope.stateTransition();
                     }
                 });
             } else {

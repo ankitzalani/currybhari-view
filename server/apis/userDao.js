@@ -36,7 +36,7 @@ module.exports = function(app) {
 
                 user.save(function(error, userObj) {
                     if (error) return utils.throwError(res, message.SOMETHING_WENT_WRONG);
-                    return utils.throwSuccess(res, createUserObjResponse(userObj));
+                    return utils.throwSuccess(response, createUserObjResponse(userObj));
                 });
             }
         });
@@ -60,7 +60,7 @@ module.exports = function(app) {
         User.find({
             _id: request.body.user._id
         }, function(error, user) {
-            user[0].addresses.push(request.body.address);
+            user[0].addresses[0] = request.body.address;
             user[0].save(function(error) {
                 if (error) return utils.throwError(response, message.SOMETHING_WENT_WRONG);
                 return utils.throwSuccess(response);

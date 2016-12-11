@@ -13,6 +13,10 @@ angular.module('curryBhariApp')
             region: ''
         };
 
+        if(UserService.user && UserService.user.addresses) {
+            $scope.address = UserService.user.addresses[0];
+        }
+
         $scope.addAddress = function() {
             var controller = this;
             UserService.addAddress($scope.address).then(function(promise) {

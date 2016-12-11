@@ -59,11 +59,11 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
             controller: 'loginController',
         });
 
-        $stateProvider
-            .state('payment', {
-                title: 'Payment',
-                url: '/payment',
-                templateUrl: '/payment/payment.html',
-                controller: 'paymentController',
-            });
+    $stateProvider
+        .state('payment', {
+            title: 'Payment',
+            url: '/payment',
+            templateUrl: '/payment/payment.html',
+            controller: 'paymentController',
+        });
 });
