@@ -31,8 +31,8 @@
                         <table class="table table-condensed">
                             <thead>
                                 <tr class="cart_menu">
-                                    <td class="image">Item</td>
-                                    <td class="description"></td>
+                                    <!-- <td class="image">Item</td> -->
+                                    <td class="description">Item</td>
                                     <td class="price">Price</td>
                                     <td class="quantity">Quantity</td>
                                     <td class="total">Total</td>
@@ -41,11 +41,11 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="obj in cart">
-                                    <td class="cart_product productinfo text-center">
+                                    <!-- <td class="cart_product productinfo text-center">
                                         <a ui-sref="productDetails({id: obj.product._id})">
                                             <img ng-src="{{obj.product.image}}" alt="">
                                         </a>
-                                    </td>
+                                    </td> -->
                                     <td class="cart_description">
                                         <h4><a href="">{{obj.product.name}}</a></h4>
                                     </td>
