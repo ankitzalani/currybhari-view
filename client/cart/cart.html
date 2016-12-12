@@ -72,7 +72,7 @@
             <section id="do_action">
                 <div class="container">
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-12 ">
                             <div class="total_area">
                                 <ul>
                                     <li>Cart Sub Total <span>{{payment.subTotal}}</span></li>
@@ -82,8 +82,10 @@
                                     <li>Tax <span>{{payment.tax}}</span></li>
                                     <li>Total Amount <span>{{payment.grandTotal}}</span></li>
                                 </ul>
-                                <a class="btn btn-default check_out" ui-sref="container">Continue Shopping</a>
-                                <a class="btn btn-default check_out" ng-click="goToCheckout()">Check Out</a>
+                                <div>
+                                    <a class="btn btn-default check_out" ui-sref="container">Continue Shopping</a>
+                                    <a class="btn btn-default check_out" ng-click="goToCheckout()">Check Out</a>
+                                </div>
                             </div>
                         </div>
                     </div>
