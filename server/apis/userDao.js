@@ -22,7 +22,7 @@ module.exports = function(app) {
 
     app.post('/user', cors(utils.corsOptions), function(request, response) {
         User.findOne({
-            'name': request.body.username
+            $or:[{'email': request.body.email}, {'mobile': request.body.mobile}]
         }, function(error, user) {
             if (user && user.name) {
                 utils.throwError(response, message.ALREADY_REGISTERED);
