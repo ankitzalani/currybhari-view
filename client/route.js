@@ -69,4 +69,12 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
             templateUrl: '/payment/payment.html',
             controller: 'paymentController',
         });
+
+    $stateProvider
+        .state('profile', {
+            title: 'Profile',
+            url: '/profile',
+            templateUrl: '/profile/profile.html',
+            controller: 'profileController',
+        });
 });
