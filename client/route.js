@@ -18,10 +18,13 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
     $stateProvider
         .state('container', {
             title: 'Container',
-            url: '/',
+            url: '/q=:q',
             templateUrl: 'container/container.html',
             controller: 'containerController',
-            authenticate: true
+            authenticate: true,
+            params: {
+                q: null,
+            }
         });
 
     $stateProvider

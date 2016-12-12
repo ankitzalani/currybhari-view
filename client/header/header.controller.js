@@ -34,7 +34,7 @@ angular.module('curryBhariApp')
         }
 
         $scope.search = function() {
-            Products.filter($scope.searchText);
+            $state.go('container',{q:$scope.searchText});
         }
 
         $scope.navigateToContainer = function() {

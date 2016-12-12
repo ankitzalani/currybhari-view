@@ -1,14 +1,19 @@
 angular.module('curryBhariApp')
-    .controller('containerController', ['$scope', '$http', '$q', 'Products', 'Cart', 'Notification', function(
+    .controller('containerController', ['$scope', '$http', '$q', 'Products', 'Cart', 'Notification', '$stateParams', function(
         $scope,
-        $http, $q, Products, Cart, Notification) {
+        $http, $q, Products, Cart, Notification, $stateParams) {
         $scope.products = [];
-        $scope.allProducts = [];
 
         $scope.getProducts = function() {
             Products.list().then(function(promise) {
                 $scope.products = promise.data;
-                $scope.allProducts = promise.data;
+
+                var query = $stateParams.q;
+                if (query) {
+                    $scope.products = $scope.products.filter(function(product) {
+                        return product.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+                    });
+                }
             });
         };
 
@@ -23,12 +28,6 @@ angular.module('curryBhariApp')
                 });
             }
         };
-
-        $scope.$on('products.filter', function(newState) {
-            $scope.products = $scope.allProducts.filter(function(product) {
-                return product.name.toLowerCase().indexOf(Products.searchText.toLowerCase()) !== -1;
-            });
-        });
 
         $scope.getProducts();
     }]);
