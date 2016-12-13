@@ -1,9 +1,14 @@
 angular.module('curryBhariApp')
-    .controller("checkoutController", ['$scope', '$http', '$q', '$auth', 'UserService', '$state', function(
+    .controller("checkoutController", ['$scope', '$http', '$q', '$auth', 'UserService', '$state', 'PinCodeService', function(
         $scope,
-        $http, $q, $auth, UserService, $state) {
+        $http, $q, $auth, UserService, $state, PinCodeService) {
         $scope.user = UserService.user;
         $scope.error;
+
+        $scope.countryList = ['India'];
+        $scope.regionList = ['Karnataka'];
+        $scope.cityList = ['Bangalore'];
+        $scope.pinCodesList = [];
 
         $scope.address = {
             address: '',
@@ -40,4 +45,13 @@ angular.module('curryBhariApp')
                 }
             });
         }
+
+        $scope.getPinCodes = function() {
+            var controller = this;
+            PinCodeService.getPinCodes().then(function(promise) {
+                controller.pinCodesList = JSON.parse(promise.data);
+            });
+        }
+
+        $scope.getPinCodes();
     }]);
