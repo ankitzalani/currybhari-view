@@ -7,12 +7,23 @@ var appconfig = {
 angular.module('curryBhariApp').service('Products', ['$http', '$q', '$rootScope', function($http, $q, $rootScope) {
     this.searchText = '';
 
+    this.products = [];
+
     this.list = function() {
-        var promise = $http.get(appconfig.host + '/products').success(
-            function(data) {
-                return data;
+        var service = this;
+        if (service.products.length == 0) {
+            return $http.get(appconfig.host + '/products').success(
+                function(data) {
+                    service.products = data;
+                    return data;
+                });
+        } else {
+            var deferred = $q.defer();
+            deferred.resolve({
+                data: service.products
             });
-        return promise;
+            return deferred.promise;
+        }
     };
 
     this.getProduct = function(id) {
@@ -22,13 +33,8 @@ angular.module('curryBhariApp').service('Products', ['$http', '$q', '$rootScope'
                     return data;
                 });
             return promise;
-        } else{
+        } else {
             return [];
         }
-    };
-
-    this.filter = function(searchText) {
-        this.searchText = searchText;
-        $rootScope.$broadcast('products.filter', searchText);
     };
 }]);

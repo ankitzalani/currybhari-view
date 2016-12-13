@@ -47,6 +47,18 @@ angular.module('curryBhariApp').service('UserService', ['$http', '$q', '$auth', 
             return promise;
         }
 
+        this.addAddress = function(addressObj) {
+            var self = this;
+            if (self.user) {
+                var promise = $http.put(appconfig.host + '/address', {address: addressObj, user: self.user}).success(
+                    function(data) {
+                        return data;
+                    });
+                return promise;
+            }
+
+        }
+
         this.logout = function() {
             $cookieStore.remove('user');
             this.user = {};

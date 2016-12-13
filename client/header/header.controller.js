@@ -1,11 +1,19 @@
 angular.module('curryBhariApp')
-    .controller("headerController", ['$scope', '$http', '$q', '$auth', 'UserService', 'Products', '$state', function(
+    .controller("headerController", ['$scope', '$http', '$q', '$auth', 'UserService', 'Products', '$state', '$rootScope', function(
         $scope,
-        $http, $q, $auth, UserService, Products, $state) {
+        $http, $q, $auth, UserService, Products, $state, $rootScope) {
+
+          $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+              $rootScope.previousState = from;
+          });
 
         $scope.userService = UserService;
 
         $scope.searchText = '';
+
+        $rootScope.$on('$stateChangeSuccess', function(ev, to, toParams, from, fromParams) {
+            $rootScope.previousState = from;
+        });
 
         $scope.showLoginDialogue = function() {
             $("#loginDialogue").dialog();
@@ -22,10 +30,11 @@ angular.module('curryBhariApp')
 
         $scope.logout = function() {
             UserService.logout();
+            $state.go('container');
         }
 
         $scope.search = function() {
-            Products.filter($scope.searchText);
+            $state.go('container',{q:$scope.searchText});
         }
 
         $scope.navigateToContainer = function() {

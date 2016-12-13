@@ -17,13 +17,27 @@
                     <input type="text" class="form-control" ng-model="searchText" ng-change="search()" ng-keydown="$event.which === 13 && navigateToContainer()" />
                 </div>
                 <div class="col-sm-4">
+
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a ui-sref="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li ng-if="!userService.user.username"><a href="#" ui-sref="login"><i class="fa fa-lock"></i> Login</a></li>
-                            <li ng-if="userService.user.username"><a href="#" ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
-                            <li ng-if="userService.user.username"><a href="">{{userService.user.username}}</a></li>
-                        </ul>
+                            <!-- <li ng-if="userService.user.username"><a href="#" ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
+                            <li ng-if="userService.user.username"><a ui-sref="profile">{{userService.user.username}}</a></li> -->
+                        </ul>&nbsp;
+
+                        <div class="btn-group" ng-if="userService.user.username">
+                            <button type="button" class="btn btn-primary" data-toggle="dropdown" style="margin-top:0px">
+                            {{userService.user.username}}</button>
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" style="margin-top:0px">
+                              <span class="caret"></span><span class="sr-only">{{userService.user.username}}</span>
+                            </button>
+                            <ul class="dropdown-menu" role="menu">
+                                <li><a ui-sref="profile">Profile </a></li></br>
+                                <li><a ui-sref="checkout">Change Address</a></li></br>
+                                <li><a href="#" ng-click="logout()">Log Out </a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -67,16 +81,16 @@
         </div>
     </div> -->
     <div id="loginDialogue" title="Login" style="display:none">
-      <div>
-        <ul class="nav">
-            <li>
-                <label><button class="btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
+        <div>
+            <ul class="nav">
+                <li>
+                    <label><button class="btn-facebook" ng-click="authenticate('facebook')">Sign in with Facebook</button>
               </label>
-            </li>
-            <li>
-                <label><button class="btn-google" ng-click="authenticate('google')">Sign in with Google</button></label>
-            </li>
-        </ul>
-      </div>
+                </li>
+                <li>
+                    <label><button class="btn-google" ng-click="authenticate('google')">Sign in with Google</button></label>
+                </li>
+            </ul>
+        </div>
     </div>
 </header>

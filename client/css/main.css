@@ -1579,7 +1579,6 @@ h2.title {
 .cart_product {
     display: block;
     margin: 15px -70px 10px 25px;
-    width: 100px;
 }
 
 .cart_quantity_button a {
@@ -2484,4 +2483,8 @@ h2.title {
 .btn-facebook .badge {
     color: #3b5998;
     background-color: #fff
+}
+
+.profile {
+  margin-top: 0px;
 }

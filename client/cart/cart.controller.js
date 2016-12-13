@@ -1,7 +1,7 @@
 angular.module('curryBhariApp')
-    .controller("cartController", ['$scope', '$http', '$q', 'Cart', function(
+    .controller("cartController", ['$scope', '$http', '$q', 'Cart', 'UserService', '$state', function(
         $scope,
-        $http, $q, Cart) {
+        $http, $q, Cart, UserService, $state) {
 
         $scope.cart = Cart.cart;
         $scope.payment = Cart.calculatePayment();
@@ -16,4 +16,12 @@ angular.module('curryBhariApp')
             Cart.changeQuantity(id, quantity);
             $scope.payment = Cart.calculatePayment();
         };
+
+        $scope.goToCheckout = function() {
+            if (!UserService.user || !UserService.user.username) {
+                $state.go('login');
+            } else {
+                $state.go('checkout');
+            }
+        }
     }]);

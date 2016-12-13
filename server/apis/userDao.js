@@ -1,68 +1,70 @@
 var cors = require('cors');
 var mock = require('../debug/fetch');
 var User = require('../database/modals/User');
-
 var bodyParser = require('body-parser');
-
+var message = require('../messages');
+var utils = require('./utils');
 var debug = false;
 
-var corsOptions = {
-    origin: '*',
-    optionsSuccessStatus: 200
-};
+var createUserObjResponse = function(userObj) {
+    return {
+        _id: userObj._id,
+        username: userObj.name,
+        email: userObj.email,
+        addresses: userObj.addresses
+    }
+}
 
 module.exports = function(app) {
-    app.use(bodyParser.urlencoded());
+    app.use(bodyParser.urlencoded({
+        extended: true
+    }));
 
-    app.post('/user', cors(corsOptions), function(req, res) {
+    app.post('/user', cors(utils.corsOptions), function(request, response) {
         User.findOne({
-            'name': req.body.username
-        }, function(err, u) {
-            if (u && u.name) {
-                res.json(200, {
-                    error: "You are already registered with us, please login to proceed."
-                });
+            $or:[{'email': request.body.email}, {'mobile': request.body.mobile}]
+        }, function(error, user) {
+            if (user && user.name) {
+                utils.throwError(response, message.ALREADY_REGISTERED);
             } else {
                 var user = new User({
-                    name: req.body.username,
-                    email: req.body.email,
-                    hashedPassword: req.body.password,
-                    salt: 'salt',
-                    addresses: [{
-                        address: req.body.address,
-                        city: req.body.city,
-                        postCode: req.body.postCode,
-                        country: req.body.country,
-                        region: req.body.region
-                    }]
+                    name: request.body.username,
+                    email: request.body.email,
+                    hashedPassword: request.body.password,
+                    salt: 'salt'
                 });
 
-                user.save(function(err, usr) {
-                    if (err) {
-                        return next(err);
-                    }
-                    res.json(201, req.body);
+                user.save(function(error, userObj) {
+                    if (error) return utils.throwError(res, message.SOMETHING_WENT_WRONG);
+                    return utils.throwSuccess(response, createUserObjResponse(userObj));
                 });
             }
         });
     });
 
-    app.get('/user', cors(corsOptions), function(req, res) {
+    app.get('/user', cors(utils.corsOptions), function(request, response) {
         User.findOne({
-            'name': req.query.username
-        }, function(err, u) {
-            if (err) res.json(200, {
-                error: 'Something went wrong while getting username: ' + err
-            });
-            if (u && req.query.password === u.hashedPassword) {
-                res.json(200, {
-                    username: u.name
-                });
+            'name': request.query.username
+        }, function(error, userObj) {
+            if (error) {
+                return utils.throwError(response, message.SOMETHING_WENT_WRONG);
+            } else if (userObj && request.query.password === userObj.hashedPassword) {
+                return utils.throwSuccess(response, createUserObjResponse(userObj));
             } else {
-                res.json(200, {
-                    error: 'Invalid Credentials'
-                });
+                return utils.throwError(response, message.INVALID_CREDENTIALS);
             }
         })
+    });
+
+    app.put('/address', cors(utils.corsOptions), function(request, response) {
+        User.find({
+            _id: request.body.user._id
+        }, function(error, user) {
+            user[0].addresses[0] = request.body.address;
+            user[0].save(function(error) {
+                if (error) return utils.throwError(response, message.SOMETHING_WENT_WRONG);
+                return utils.throwSuccess(response);
+            });
+        });
     });
 }

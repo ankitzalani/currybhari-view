@@ -10,8 +10,7 @@ var corsOptions = {
 var debug = false;
 
 module.exports = function(app) {
-    require('./productDao')(app);
-    require('./userDao')(app);
-    require('./sliderDao')(app);
-    require('./configDao')(app);
+    app.get('/config', cors(corsOptions), function(req, res) {
+        res.status(200).json('{"serviceTax": 20.5}');
+    });
 };
