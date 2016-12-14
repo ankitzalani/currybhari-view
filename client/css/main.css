@@ -866,6 +866,7 @@ h2.title {
 
 .productinfo {
     position: relative;
+    width: 30%;
 }
 
 .product-overlay {
@@ -1602,7 +1603,6 @@ h2.title {
 }
 
 .cart_delete {
-    display: block;
     margin-right: -12px;
     overflow: hidden;
 }
@@ -2486,5 +2486,5 @@ h2.title {
 }
 
 .profile {
-  margin-top: 0px;
+    margin-top: 0px;
 }

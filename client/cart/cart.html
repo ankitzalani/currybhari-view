@@ -27,7 +27,7 @@
                     </nav>
                 </div>
                 <div ng-if="cart && cart.length">
-                    <div class="table-responsive cart_info">
+                    <div class="cart_info">
                         <table class="table table-condensed">
                             <thead>
                                 <tr class="cart_menu">
@@ -40,7 +40,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="obj in cart">
-                                    <td class="cart_product productinfo">
+                                    <td class="productinfo">
                                         <h4><a ui-sref="productDetails({id: obj.product._id})">{{obj.product.name}}</a></h4>
                                     </td>
                                     <td class="cart_price">
