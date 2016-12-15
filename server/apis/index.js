@@ -14,5 +14,5 @@ module.exports = function(app) {
     require('./userDao')(app);
     require('./sliderDao')(app);
     require('./configDao')(app);
-    require('./pinCode')(app);
+    require('./postCodeDao')(app);
 };

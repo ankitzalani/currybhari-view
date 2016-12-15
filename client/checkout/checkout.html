@@ -21,8 +21,9 @@
                             </select>
                         </div>
                         <div class="form-group col-sm-6">
-                            <label for="postInput">Post Code (*)</label>
-                            <select ng-model="address.postCode" ng-options="postCode.Pincode for postCode in pinCodesList" class="form-control" ng-init="address.postCode = pinCodesList[0].Pincode">
+                            <label for="postInput">Post Code (*)</label> <label>{{location}}</label>
+                            <select ng-model="address.postCode" ng-options="postCode.postCode for postCode in postCodesList" class="form-control"
+                                ng-init="address.postCode = postCodesList[0].postCode">
                             </select>
                         </div>
                         <div class="form-group col-sm-6">

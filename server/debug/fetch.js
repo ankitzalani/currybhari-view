@@ -5,7 +5,7 @@ var debugFetchConfig = {};
 debugFetchConfig['products'] = 'products.json';
 debugFetchConfig['product'] = 'product.json';
 debugFetchConfig['config'] = 'config.json';
-debugFetchConfig['pinCode'] = 'pinCode.json';
+debugFetchConfig['postCode'] = 'postCode.json';
 
 exports.fetchMock = function(api, callback) {
     var readFile = function(filename, callback) {

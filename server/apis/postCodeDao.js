@@ -10,9 +10,9 @@ module.exports = function(app) {
         extended: true
     }));
 
-    app.get('/pincode', cors(utils.corsOptions), function(request, response) {
-        mock.fetchMock('pinCode', function(pinCodes) {
-            return utils.throwSuccess(response  , pinCodes);
+    app.get('/postCode', cors(utils.corsOptions), function(request, response) {
+        mock.fetchMock('postCode', function(postCodes) {
+            return utils.throwSuccess(response  , postCodes);
         });
     });
 }
