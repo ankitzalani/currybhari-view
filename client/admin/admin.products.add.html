@@ -1,0 +1,59 @@
+<div class="crud-form" data-unique-hash="a2ad475d60b22954085c657a73309b8f">
+    <div class="container gc-container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="table-label">
+                    <div class="floatL l5">
+                        <!-- Add Product -->
+                    </div>
+                </div>
+                <div class="form-container table-container">
+                    <form action="/demo/bootstrap_theme/insert" method="post" id="crudForm" enctype="multipart/form-data" class="form-horizontal" accept-charset="utf-8">
+                        <div class="form-group customerName_form_group">
+                            <label class="col-sm-3 control-label">
+                                        Name                                    </label>
+                            <div class="col-sm-9">
+                                <input id="field-customerName" class="form-control" name="customerName" type="text" value="" maxlength="50"> </div>
+                        </div>
+                        <div class="form-group contactLastName_form_group">
+                            <label class="col-sm-3 control-label">
+                                        Description                                    </label>
+                            <div class="col-sm-9">
+                                <input id="field-contactLastName" class="form-control" name="contactLastName" type="text" value="" maxlength="50"> </div>
+                        </div>
+                        <div class="form-group contactFirstName_form_group">
+                            <label class="col-sm-3 control-label">
+                                        Rate                                    </label>
+                            <div class="col-sm-9">
+                                <input id="field-contactFirstName" class="form-control" name="contactFirstName" type="text" value="" maxlength="50"> </div>
+                        </div>
+                        <div class="form-group phone_form_group">
+                            <label class="col-sm-3 control-label">
+                                        Image                                    </label>
+                            <div class="col-sm-9">
+                                <input id="field-phone" class="form-control" name="phone" type="text" value="" maxlength="50"> </div>
+                        </div>
+                </div>
+                <!-- Start of hidden inputs -->
+                <!-- End of hidden inputs -->
+
+                <div class="small-loading hidden" id="FormLoading">Loading, saving data...</div>
+
+                <div class="form-group">
+                    <div id="report-error" class="report-div error bg-danger" style="display:none"></div>
+                    <div id="report-success" class="report-div success bg-success" style="display:none"></div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-offset-3 col-sm-7">
+                        <button class="btn btn-default btn-success b10" type="submit" id="form-button-save">
+                                        <i class="fa fa-check"></i>Save</button>
+                        <button class="btn btn-default cancel-button b10" type="button" id="cancel-button" ui-sref="adminProducts">
+                                        <i class="fa fa-warning"></i>Cancel</button>
+                    </div>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

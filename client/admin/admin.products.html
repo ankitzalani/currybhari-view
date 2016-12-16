@@ -1,0 +1,208 @@
+<div class="container gc-container" ng-controller="adminProductsController">
+    <div class="success-message hidden"></div>
+
+    <div class="row">
+        <div class="table-section">
+
+            <div class="table-container">
+                <form action="/demo/bootstrap_theme" method="post" autocomplete="off" id="gcrud-search-form" accept-charset="utf-8">
+                    <div class="scroll-if-required">
+                        <table class="table table-bordered grocery-crud-table table-hover">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">
+                                        Actions </th>
+                                    <th class="column-with-ordering" data-order-by="image">Image</th>
+                                    <th class="column-with-ordering" data-order-by="id">Id</th>
+                                    <th class="column-with-ordering" data-order-by="name">Name</th>
+                                    <th class="column-with-ordering" data-order-by="description">Description</th>
+                                    <th class="column-with-ordering" data-order-by="rate">Rate</th>
+                                </tr>
+                                <tr class="filter-row gc-search-row">
+                                    <td class="no-border-right ">
+                                        <div class="floatL t5">
+                                            <input type="checkbox" class="select-all-none">
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-default" href="#"><i class="fa fa-plus" ui-sref="adminAddProduct"></i></a>
+                                    </td>
+                                    <td>
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control searchable-input floatL" placeholder="Search Id" name="contactLastName">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control searchable-input floatL" placeholder="Search Name" name="phone">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control searchable-input floatL" placeholder="Search Description" name="city">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control searchable-input floatL" placeholder="Search Rate" name="country">
+                                    </td>
+                                </tr>
+
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="product in products">
+                                    <td>
+                                        <input type="checkbox" class="select-row" data-id="103">
+                                    </td>
+                                    <td>
+                                        <div class="only-desktops" style="white-space: nowrap">
+                                            <a class="btn btn-default" href="#"><i class="fa fa-pencil" ng-click="edit(product)"></i></a>
+                                            <a class="btn btn-default" href="#"><i class="fa fa-eye" ng-click="view(product)"></i></a>
+                                            <a class="btn btn-default" href="#"><i class="fa fa-trash-o" ng-click="delete(product)"></i></a>
+                                        </div>
+                                    </td>
+                                    <td class="adminCartProductInfo">
+                                      <a ui-sref="productDetails({id: product._id})">
+                                          <img ng-src="{{product.image}}" width="100px">
+                                      </a>
+                                    </td>
+                                    <td>{{product._id}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.description}}</td>
+                                    <td>{{product.rate}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <!-- Table Footer -->
+                    <div class="footer-tools">
+
+                        <!-- "Show 10/25/50/100 entries" (dropdown per-page) -->
+                        <div class="floatL t20 l5">
+                            <div class="floatL t10">
+                                Show </div>
+                            <div class="floatL r5 l5 t3">
+                                <select name="per_page" class="per_page form-control">
+                                                                                                                    <option value="10" selected="selected">
+                                                                        10&nbsp;&nbsp;
+                                                            </option>
+                                                                                                                    <option value="25">
+                                                                        25&nbsp;&nbsp;
+                                                            </option>
+                                                                                                                    <option value="50">
+                                                                        50&nbsp;&nbsp;
+                                                            </option>
+                                                                                                                    <option value="100">
+                                                                        100&nbsp;&nbsp;
+                                                            </option>
+                                                                                                            </select>
+                            </div>
+                            <div class="floatL t10">
+                                entries </div>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- End of "Show 10/25/50/100 entries" (dropdown per-page) -->
+
+
+                        <div class="floatR r5">
+
+                            <!-- Buttons - First,Previous,Next,Last Page -->
+                            <ul class="pagination">
+                                <li class="disabled paging-first"><a href="#"><i class="fa fa-step-backward"></i></a></li>
+                                <li class="prev disabled paging-previous"><a href="#"><i class="fa fa-chevron-left"></i></a></li>
+                                <li>
+                                    <span class="page-number-input-container">
+                                                            <input type="number" value="1" class="form-control page-number-input">
+                                                        </span>
+                                </li>
+                                <li class="next paging-next"><a href="#"><i class="fa fa-chevron-right"></i></a></li>
+                                <li class="paging-last"><a href="#"><i class="fa fa-step-forward"></i></a></li>
+                            </ul>
+                            <!-- End of Buttons - First,Previous,Next,Last Page -->
+
+                            <input type="hidden" name="page_number" class="page-number-hidden" value="1">
+                        </div>
+
+
+                        <!-- "Displaying 1 to 10 of 116 items" -->
+                        <div class="floatR r10 t30">
+                            Displaying <span class="paging-starts">1</span> to <span class="paging-ends">10</span> of <span class="current-total-results">122</span> items <span class="full-total-container hidden">
+                                                    (filtered from <span class="full-total">122</span> total entries) </span>
+                        </div>
+                        <!-- End of "Displaying 1 to 10 of 116 items" -->
+
+                        <div class="clear"></div>
+                    </div>
+                    <!-- End of: Table Footer -->
+
+                </form>
+            </div>
+        </div>
+
+        <!-- Delete confirmation dialog -->
+        <div class="delete-confirmation modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure that you want to delete this record?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-danger delete-confirmation-button">Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Delete confirmation dialog -->
+
+        <!-- Delete Multiple confirmation dialog -->
+        <div class="delete-multiple-confirmation modal fade">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Delete</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure that you want to delete this record?</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                Cancel                            </button>
+                        <button type="button" class="btn btn-danger delete-multiple-confirmation-button" data-target="/demo/bootstrap_theme/delete_multiple">
+                                Delete                            </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End of Delete Multiple confirmation dialog -->
+
+    </div>
+</div>
+
+<!--
+<script type="text/javascript">
+	var default_javascript_path = '/assets/grocery_crud/js';
+	var default_css_path = '/assets/grocery_crud/css';
+	var default_texteditor_path = '/assets/grocery_crud/texteditor';
+	var default_theme_path = '/assets/grocery_crud/themes';
+	var base_url = '/';
+
+</script>
+
+<script type="text/javascript">
+
+	  var _gaq = _gaq || [];
+	  _gaq.push(['_setAccount', 'UA-23493740-1']);
+	  _gaq.push(['_trackPageview']);
+
+	  (function() {
+		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+	  })();
+
+	</script>
+		<script src="https://d328ce9sgcu5lp.cloudfront.net/assets/themes/responsive/js/jquery-2.2.4.min.js?v1.6.0"></script>
+		<script src="/assets/grocery_crud/themes/bootstrap/build/js/list.min.js?v1.6.0"></script>
+		<script src="/assets/themes/demo/js/bootstrap-version-switch.js?v1.6.0"></script>
+ -->

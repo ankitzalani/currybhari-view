@@ -77,4 +77,20 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
             templateUrl: '/profile/profile.html',
             controller: 'profileController',
         });
+
+    $stateProvider
+        .state('adminProducts', {
+            title: 'AdminProducts',
+            url: '/admin/products',
+            templateUrl: '/admin/admin.products.html',
+            controller: 'adminProductsController',
+        });
+
+    $stateProvider
+        .state('adminAddProduct', {
+            title: 'Add Product',
+            url: '/admin/products/add',
+            templateUrl: '/admin/admin.products.add.html',
+            controller: 'adminProductsController',
+        });
 });

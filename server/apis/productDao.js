@@ -30,4 +30,17 @@ module.exports = function(app) {
             });
         }
     });
+
+    app.delete('/product/:id', cors(utils.corsOptions), function(req, res) {
+        var id = req.params.id;
+        product.remove({
+            _id: id
+        }, function(err) {
+            if (!err) {
+                return utils.throwSuccess(res);
+            } else {
+                return utils.throwError(response, message.SOMETHING_WENT_WRONG);
+            }
+        });
+    });
 };

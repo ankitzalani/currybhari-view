@@ -2492,3 +2492,8 @@ h2.title {
 .profile {
     margin-top: 0px;
 }
+
+.adminCartProductInfo {
+    width: 100px;
+    height: 100px;
+}

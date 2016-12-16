@@ -9,9 +9,9 @@ angular.module('curryBhariApp').service('Products', ['$http', '$q', '$rootScope'
 
     this.products = [];
 
-    this.list = function() {
+    this.list = function(disableCaching) {
         var service = this;
-        if (service.products.length == 0) {
+        if (disableCaching || service.products.length == 0) {
             return $http.get(appconfig.host + '/products').success(
                 function(data) {
                     service.products = data;
@@ -37,4 +37,12 @@ angular.module('curryBhariApp').service('Products', ['$http', '$q', '$rootScope'
             return [];
         }
     };
+
+    this.delete = function(id) {
+        var promise = $http.delete(appconfig.host + '/product/' + id).success(
+            function(data) {
+                return data;
+            });
+        return promise;
+    }
 }]);
