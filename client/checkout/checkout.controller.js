@@ -1,7 +1,7 @@
 angular.module('curryBhariApp')
-    .controller("checkoutController", ['$scope', '$http', '$q', '$auth', 'UserService', '$state', 'PostCodeService', function(
+    .controller("checkoutController", ['$scope', '$http', '$q', '$auth', 'UserService', '$state', 'PostCodeService', 'Cart', function(
         $scope,
-        $http, $q, $auth, UserService, $state, postCodeService) {
+        $http, $q, $auth, UserService, $state, postCodeService, Cart) {
         $scope.user = UserService.user;
         $scope.error;
 
@@ -42,17 +42,17 @@ angular.module('curryBhariApp')
         $scope.confirmOrder = function() {
             UserService.addAddress($scope.address).then(function(promise) {
                 if (!promise.data.error) {
-                    $state.go('payment');
+                    Cart.saveCart().then(function(promise) {
+                        $state.go('payment');
+                    });
                 }
             });
         }
-
         $scope.$watch('address.postCode', function(event, value) {
             if (value) {
                 $scope.location = value.Location;
             }
         });
-
         $scope.getpostCodes = function() {
             var controller = this;
             postCodeService.getpostCodes().then(function(promise) {
@@ -60,6 +60,5 @@ angular.module('curryBhariApp')
                 controller.address.postCode = controller.postCodesList[0].postCode;
             });
         }
-
         $scope.getpostCodes();
     }]);

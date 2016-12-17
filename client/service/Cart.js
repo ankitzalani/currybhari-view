@@ -61,5 +61,22 @@ angular.module('curryBhariApp').service('Cart', ['$http', '$q', 'Config', '$cook
             'grandTotal': grandTotal
         };
     };
+
+    this.saveCart = function() {
+        var service = this;
+        var cartObject = {
+            'user':service.user,
+            'product': service.cart,
+            'subTotal': cart.service,
+            'tax': '93.45',
+            'grandTotal': '4567'
+        };
+
+        var promise = $http.post(appconfig.host + '/cart', cartObject).success(
+            function(data) {
+                return data;
+            });
+        return promise;
+    }
     $cookieStore.put('cart', this.cart);
 }]);
