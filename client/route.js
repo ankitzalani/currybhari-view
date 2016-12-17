@@ -1,6 +1,6 @@
 'use strict';
 
-var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification', 'satellizer', 'ngCookies', 'angular-md5']);
+var app = angular.module("curryBhariApp", ['ui.router', 'ui-notification', 'satellizer', 'ngCookies', 'angular-md5', 'ngFileUpload']);
 app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $authProvider) {
     $authProvider.facebook({
         clientId: '1028093290647214'
