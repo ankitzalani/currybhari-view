@@ -34,7 +34,7 @@ angular.module('curryBhariApp').controller("adminProductsController", ['$scope',
 
     $scope.edit = function() {
         var controller = this;
-        Products.edit(productObj).then(function(data) {
+        Products.edit($scope.productObj).then(function(data) {
             controller.getProducts();
         });
     }
