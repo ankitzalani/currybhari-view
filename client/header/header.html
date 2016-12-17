@@ -21,7 +21,7 @@
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav">
                             <li><a ui-sref="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
-                            <li ng-if="!userService.user.username=='ankit'"><a href="#" ui-sref="login"><i class="fa fa-lock"></i> Login</a></li>
+                            <li ng-if="!userService.user.username"><a href="#" ui-sref="login"><i class="fa fa-lock"></i> Login</a></li>
                             <!-- <li ng-if="userService.user.username"><a href="#" ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
                             <li ng-if="userService.user.username"><a ui-sref="profile">{{userService.user.username}}</a></li> -->
                         </ul>&nbsp;

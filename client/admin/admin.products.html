@@ -1,9 +1,6 @@
 <div class="container gc-container" ng-controller="adminProductsController">
-    <div class="success-message hidden"></div>
-
     <div class="row">
         <div class="table-section">
-
             <div class="table-container">
                 <form action="/demo/bootstrap_theme" method="post" autocomplete="off" id="gcrud-search-form" accept-charset="utf-8">
                     <div class="scroll-if-required">
@@ -25,7 +22,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="btn btn-default" href="#"><i class="fa fa-plus" ui-sref="adminAddProduct"></i></a>
+                                        <a class="btn btn-default" href="#" ui-sref="adminAddProduct"><i class="fa fa-plus"></i></a>
                                     </td>
                                     <td>
                                     </td>
@@ -42,24 +39,23 @@
                                         <input type="text" class="form-control searchable-input floatL" placeholder="Search Rate" name="country">
                                     </td>
                                 </tr>
-
                             </thead>
                             <tbody>
-                                <tr ng-repeat="product in products">
+                                <tr ng-repeat="product in products.data">
                                     <td>
                                         <input type="checkbox" class="select-row" data-id="103">
                                     </td>
                                     <td>
                                         <div class="only-desktops" style="white-space: nowrap">
-                                            <a class="btn btn-default" href="#"><i class="fa fa-pencil" ng-click="edit(product)"></i></a>
-                                            <a class="btn btn-default" href="#"><i class="fa fa-eye" ng-click="view(product)"></i></a>
-                                            <a class="btn btn-default" href="#"><i class="fa fa-trash-o" ng-click="delete(product)"></i></a>
+                                            <a class="btn btn-default" href="#" ng-click="edit(product)"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-default" href="#" ng-click="view(product)"><i class="fa fa-eye"></i></a>
+                                            <a class="btn btn-default" href="#" ng-click="delete(product)"><i class="fa fa-trash-o"></i></a>
                                         </div>
                                     </td>
                                     <td class="adminCartProductInfo">
-                                      <a ui-sref="productDetails({id: product._id})">
-                                          <img ng-src="{{product.image}}" width="100px">
-                                      </a>
+                                        <a ui-sref="productDetails({id: product._id})">
+                                            <img ng-src="{{product.image}}" width="100px">
+                                        </a>
                                     </td>
                                     <td>{{product._id}}</td>
                                     <td>{{product.name}}</td>
@@ -152,9 +148,6 @@
                 </div>
             </div>
         </div>
-        <!-- End of Delete confirmation dialog -->
-
-        <!-- Delete Multiple confirmation dialog -->
         <div class="delete-multiple-confirmation modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
@@ -174,35 +167,5 @@
                 </div>
             </div>
         </div>
-        <!-- End of Delete Multiple confirmation dialog -->
-
     </div>
 </div>
-
-<!--
-<script type="text/javascript">
-	var default_javascript_path = '/assets/grocery_crud/js';
-	var default_css_path = '/assets/grocery_crud/css';
-	var default_texteditor_path = '/assets/grocery_crud/texteditor';
-	var default_theme_path = '/assets/grocery_crud/themes';
-	var base_url = '/';
-
-</script>
-
-<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-23493740-1']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-		var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-		ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-		var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
-		<script src="https://d328ce9sgcu5lp.cloudfront.net/assets/themes/responsive/js/jquery-2.2.4.min.js?v1.6.0"></script>
-		<script src="/assets/grocery_crud/themes/bootstrap/build/js/list.min.js?v1.6.0"></script>
-		<script src="/assets/themes/demo/js/bootstrap-version-switch.js?v1.6.0"></script>
- -->

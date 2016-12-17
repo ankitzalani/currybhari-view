@@ -3,6 +3,10 @@
       "version": "0.0.0",
       "description": "",
       "main": "server.js",
+	"repository": {
+  	"type": "git",
+  	"url": "https://github.com/ankitzalani/currybhari-view.git"
+      },
       "dependencies": {
           "express": "^3.21.2",
           "request": "~2.36.0",
@@ -26,11 +30,13 @@
           "mongoose": "^4.4.6",
           "mongoose-currency ": "~0.2.0",
           "morgan": "^1.7.0",
-          "request": "^2.69.0"
+          "request": "^2.69.0",
+          "fs": "^0.0.2",
+          "multer": "1.1.0"
       },
       "scripts": {
           "start": "node server.js"
       },
       "author": "",
-      "license": ""
+      "license": "UNLICENSED" 
   }

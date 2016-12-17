@@ -27,15 +27,21 @@
                             <div class="col-sm-9">
                                 <input id="field-contactFirstName" class="form-control" name="contactFirstName" type="text" value="" maxlength="50" ng-model="productObj.rate"> </div>
                         </div>
-                        <div class="form-group phone_form_group">
+
+                        <div class="form-group contactFirstName_form_group">
                             <label class="col-sm-3 control-label">
-                                        Image                                    </label>
+                                      Image                                    </label>
                             <div class="col-sm-9">
-                                <input id="field-phone" class="form-control" name="phone" type="text" value="" maxlength="50" ng-model="productObj.image"> </div>
-                        </div>
+                                <input type="file" ngf-select ng-model="file" name="file" ngf-pattern="'image/*'" accept="image/*" ngf-max-size="20MB" /> Image thumbnail:
+                                <img style="width:100px;" ng-show="!!file" ngf-thumbnail="file || '/thumb.jpg'" />
+                                <i ng-show="file.$error.required">*required</i><br>
+                                <i ng-show="file.$error.maxSize">File too large {{up.file.size / 1000000|number:1}}MB: max 20M</i>
+                    </form>
+                    </div>
+                    <p>{{up.progress}}</p>
+                    </div>
+                    </form>
                 </div>
-                <!-- Start of hidden inputs -->
-                <!-- End of hidden inputs -->
 
                 <div class="small-loading hidden" id="FormLoading">Loading, saving data...</div>
 
@@ -45,13 +51,12 @@
                 </div>
                 <div class="form-group">
                     <div class="col-sm-offset-3 col-sm-7">
-                        <button class="btn btn-default btn-success b10" type="button" id="form-button-save" ng-click="add()">
+                        <button class="btn btn-default btn-success b10" type="button" id="form-button-save" ng-click="submit()">
                                         <i class="fa fa-check"></i>Save</button>
                         <button class="btn btn-default cancel-button b10" type="button" id="cancel-button" ui-sref="adminProducts">
                                         <i class="fa fa-warning"></i>Cancel</button>
                     </div>
                 </div>
-                </form>
             </div>
         </div>
     </div>
