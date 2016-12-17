@@ -22,10 +22,8 @@
                         <ul class="nav navbar-nav">
                             <li><a ui-sref="cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li ng-if="!userService.user.username"><a href="#" ui-sref="login"><i class="fa fa-lock"></i> Login</a></li>
-                            <!-- <li ng-if="userService.user.username"><a href="#" ng-click="logout()"><i class="fa fa-unlock"></i> Logout</a></li>
-                            <li ng-if="userService.user.username"><a ui-sref="profile">{{userService.user.username}}</a></li> -->
+                            <li><a ui-sref="adminProducts" ng-show="userService.user.username=='ankit'">Manage Products</a></li></br>
                         </ul>&nbsp;
-
                         <div class="btn-group" ng-if="userService.user.username">
                             <button type="button" class="btn btn-primary" data-toggle="dropdown" style="margin-top:0px">
                             {{userService.user.username}}</button>
@@ -35,7 +33,6 @@
                             <ul class="dropdown-menu" role="menu">
                                 <li><a ui-sref="profile">Profile </a></li></br>
                                 <li><a ui-sref="checkout">Change Address</a></li></br>
-                                <li ng-if="userService.user.username=='ankit'"><a ui-sref="adminProducts">Manager Products</a></li></br>
                                 <li><a href="#" ng-click="logout()">Log Out </a></li>
                             </ul>
                         </div>

@@ -22,7 +22,7 @@
                                         </div>
                                     </td>
                                     <td>
-                                        <a class="btn btn-default" href="#" ui-sref="adminAddProduct"><i class="fa fa-plus"></i></a>
+                                        <a class="btn btn-default" href="#" ui-sref="adminAddProduct({mode: 'add'})"><i class="fa fa-plus"></i></a>
                                     </td>
                                     <td>
                                     </td>
@@ -47,7 +47,7 @@
                                     </td>
                                     <td>
                                         <div class="only-desktops" style="white-space: nowrap">
-                                            <a class="btn btn-default" href="#" ng-click="edit(product)"><i class="fa fa-pencil"></i></a>
+                                            <a class="btn btn-default" href="#" ng-click="setEditMode(product)"><i class="fa fa-pencil"></i></a>
                                             <a class="btn btn-default" href="#" ng-click="view(product)"><i class="fa fa-eye"></i></a>
                                             <a class="btn btn-default" href="#" ng-click="delete(product)"><i class="fa fa-trash-o"></i></a>
                                         </div>

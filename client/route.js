@@ -89,8 +89,11 @@ app.config(function($stateProvider, $urlRouterProvider, NotificationProvider, $a
     $stateProvider
         .state('adminAddProduct', {
             title: 'Add Product',
-            url: '/admin/products/add',
+            url: '/admin/products/add/:mode',
             templateUrl: '/admin/admin.products.add.html',
             controller: 'adminProductsController',
+            params: {
+                mode: 'add',
+            }
         });
 });

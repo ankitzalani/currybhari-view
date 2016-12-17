@@ -9,6 +9,8 @@ angular.module('curryBhariApp').service('Products', ['$http', '$q', '$rootScope'
 
     this.products = [];
 
+    this.productObj = {};
+
     this.list = function(disableCaching) {
         var service = this;
         if (disableCaching || service.products.length == 0) {
