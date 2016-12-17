@@ -31,6 +31,23 @@ module.exports = function(app) {
         }
     });
 
+    app.post('/product', cors(utils.corsOptions), function(request, response) {
+        var productObj = request.body.product;
+
+        var prod = new product({
+            name: productObj.name,
+            description: productObj.description,
+            rate: productObj.rate,
+            image: productObj.image,
+            otherImages: productObj.otherImages
+        });
+
+        prod.save(function(error, prod) {
+            if (error) return utils.throwError(response, message.SOMETHING_WENT_WRONG);
+            return utils.throwSuccess(response, createUserObjResponse(userObj));
+        });
+    });
+
     app.delete('/product/:id', cors(utils.corsOptions), function(req, res) {
         var id = req.params.id;
         product.remove({

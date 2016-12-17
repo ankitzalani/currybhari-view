@@ -19,8 +19,8 @@ angular.module('curryBhariApp').controller("adminProductsController", ['$scope',
 
     $scope.add = function() {
         var controller = this;
-        Products.add(productObj).then(function(data) {
-            controller.getProducts();
+        Products.add($scope.productObj).then(function(data) {
+            $state.go('adminProducts');
         });
     }
 

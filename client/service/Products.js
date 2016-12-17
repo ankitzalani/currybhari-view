@@ -38,6 +38,19 @@ angular.module('curryBhariApp').service('Products', ['$http', '$q', '$rootScope'
         }
     };
 
+    this.add = function(productObj) {
+        var self = this;
+        if (productObj) {
+            var promise = $http.post(appconfig.host + '/product', {
+                product: productObj,
+            }).success(
+                function(data) {
+                    return data;
+                });
+            return promise;
+        }
+    }
+
     this.delete = function(id) {
         var promise = $http.delete(appconfig.host + '/product/' + id).success(
             function(data) {

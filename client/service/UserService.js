@@ -56,7 +56,6 @@ angular.module('curryBhariApp').service('UserService', ['$http', '$q', '$auth', 
                     });
                 return promise;
             }
-
         }
 
         this.logout = function() {
