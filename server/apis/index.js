@@ -15,4 +15,5 @@ module.exports = function(app) {
     require('./sliderDao')(app);
     require('./configDao')(app);
     require('./postCodeDao')(app);
+    require('./cartDao')(app);
 };

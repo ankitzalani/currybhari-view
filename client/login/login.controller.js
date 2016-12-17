@@ -2,7 +2,6 @@ angular.module('curryBhariApp')
     .controller("loginController", ['$scope', '$rootScope', '$http', '$q', 'UserService', '$state', function(
         $scope, $rootScope,
         $http, $q, UserService, $state) {
-
         $scope.error = "";
         $scope.user = {
             username: "",
@@ -10,12 +9,10 @@ angular.module('curryBhariApp')
             password: "",
             mobile: ""
         };
-
         $scope.login = {
             username: "",
             password: ""
         }
-
         $scope.login = function() {
             if ($scope.login.username.trim().length > 0 &&
                 $scope.login.password.trim().length > 0) {
@@ -46,7 +43,7 @@ angular.module('curryBhariApp')
                 $scope.user.password.trim().length > 0 &&
                 $scope.user.email.trim().length > 0 &&
                 $scope.user.mobile.trim().length > 0) {
-                  
+
                 UserService.register($scope.user).then(function(promise) {
                     if (promise.data.error && promise.data.error.length) {
                         $scope.error = promise.data.error;
