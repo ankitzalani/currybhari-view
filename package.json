@@ -38,5 +38,8 @@
           "start": "node server.js"
       },
       "author": "",
-      "license": "UNLICENSED" 
+      "license": "UNLICENSED",
+      "engines": {
+          "node": "5.11.1"
+      }  
   }
